@@ -17,6 +17,7 @@ namespace Skytespill
         float rotation = 0;
         private int deskW = Screen.PrimaryScreen.Bounds.Width;
         private int deskH = Screen.PrimaryScreen.Bounds.Height;
+
         
 
         List<Shot> bullet_list = new List<Shot>();
@@ -43,6 +44,21 @@ namespace Skytespill
             Invalidate();
         }
 
+
+        public void Explosiooon(float x, float y, Graphics g)
+        {
+            
+            Image current = global::Skytespill.Properties.Resources.explosion_1;
+            Image explo1 = global::Skytespill.Properties.Resources.explosion_1;
+            Image explo2 = global::Skytespill.Properties.Resources.explosion_2;
+            Image explo3 = global::Skytespill.Properties.Resources.explosion_3;
+
+            g.DrawImage(explo2, x, y);   
+        }
+       
+       
+
+
         private void InitializeComponent()
         {
             
@@ -51,13 +67,15 @@ namespace Skytespill
             this.ResumeLayout(false);
         }
 
-        private void hitCheck(boat b) {
+        private void hitCheck(boat b, Graphics g)
+        {
             for (int i = 0; i < bullet_list.Count; i++)
             {
 
                 if (b.BoatArea.IntersectsWith(bullet_list[i].BulletArea))
                 {
                     b.Life--;
+                    Explosiooon(bullet_list[i].X, bullet_list[i].Y, g);
                     bullet_list[i].Active = false;
                 }
                 if(b.Life <= 0) {
@@ -104,11 +122,15 @@ namespace Skytespill
                     b.moveShot();
                 }
                 else {
-                   
+                    
                     b.X = -999999;
                 }
             }
-            boat_list.ForEach(hitCheck);
+            
+            boat_list.ForEach(Item =>
+                {
+                    hitCheck(Item, g);
+                });
 
  /*           for (int i = 0; i < boat_list.Count; i++ )
             {
@@ -215,5 +237,9 @@ namespace Skytespill
         { 
             boat_list.Add(new boat(deskW, deskH));
         }
+
+        
     }
+
+
 }

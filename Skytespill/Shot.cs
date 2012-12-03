@@ -37,6 +37,13 @@ namespace Skytespill
 
         public float X {
             set { this.x = value; }
+            get { return this.x; }
+        }
+
+        public float Y
+        {
+            set { this.y = value; }
+            get { return this.y; }
         }
 
         public void moveShot()

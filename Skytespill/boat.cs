@@ -10,10 +10,22 @@ namespace Skytespill
     {
         private float x, y;
         private Image current = global::Skytespill.Properties.Resources.ship_right;
+
         private Image ship_left = global::Skytespill.Properties.Resources.ship_left;
+        private Image ship_ruined_left = global::Skytespill.Properties.Resources.ship_ruined_left;
+        private Image ship_sinking_left = global::Skytespill.Properties.Resources.ship_sinking_left;
+
         private Image ship_right = global::Skytespill.Properties.Resources.ship_right;
+        private Image ship_ruined_right = global::Skytespill.Properties.Resources.ship_ruined_right;
+        private Image ship_sinking_right = global::Skytespill.Properties.Resources.ship_sinking_right;
+
         private Image ship_up = global::Skytespill.Properties.Resources.ship_up;
+        private Image ship_ruined_up = global::Skytespill.Properties.Resources.ship_ruined_up;
+        private Image ship_sinking_up = global::Skytespill.Properties.Resources.ship_sinking_up;
+
         private Image ship_down = global::Skytespill.Properties.Resources.ship_down;
+        private Image ship_ruined_down = global::Skytespill.Properties.Resources.ship_ruined_down;
+        private Image ship_sinking_down = global::Skytespill.Properties.Resources.ship_sinking_down;
 
         private int life = 3;
         private int screenwidth;
@@ -30,7 +42,7 @@ namespace Skytespill
 
         public Rectangle BoatArea
         {
-            get { return new Rectangle((int)this.x, (int)this.y, 80, 80); }
+            get { return new Rectangle((int)this.x, (int)this.y, current.Width, current.Height ); }
         }
 
         public int Life
@@ -76,8 +88,26 @@ namespace Skytespill
         private void topMovement()
         {
             //move
-            x = x + 5f; 
-            current = ship_right;
+            
+
+
+            switch(this.life)
+            {
+                case 3:
+                 default:
+                    x = x + 5f; 
+                    current = ship_right;
+                    break;
+                case 2:
+                    x = x + 2f;
+                    current = ship_ruined_right;
+                    break;
+                case 1:
+                    x = x + 1f; 
+                    current = ship_sinking_right;
+                    break;
+            }
+
 
             if (x >= screenwidth - (screenMargin + current.Height))
             currentMovement = Movement.Right;
@@ -86,8 +116,25 @@ namespace Skytespill
         private void rightMovement()
         {
             //move
-            y = y + 5f;
-            current = ship_down;
+        
+
+
+            switch (this.life)
+            {
+                case 3:
+                default:
+                    y = y + 5f;
+                    current = ship_down;
+                    break;
+                case 2:
+                    y = y + 2f;
+                    current = ship_ruined_down;
+                    break;
+                case 1:
+                    y = y + 1f;
+                    current = ship_sinking_down;
+                    break;
+            }
 
             if (y >= screenheight - (screenMargin + current.Width))
                 currentMovement = Movement.Bottom;
@@ -96,8 +143,24 @@ namespace Skytespill
         private void BottomMovement()
         {
             //move
-            x = x - 5f;
-            current = ship_left;
+           
+
+            switch (this.life)
+            {
+                case 3:
+                default:
+                    x = x - 5f;
+                    current = ship_left;
+                    break;
+                case 2:
+                    x = x - 2f;
+                    current = ship_ruined_left;
+                    break;
+                case 1:
+                    x = x - 1f;
+                    current = ship_sinking_left;
+                    break;
+            }
 
             if (x <= 0 + (screenMargin))
                 currentMovement = Movement.Left;
@@ -106,8 +169,24 @@ namespace Skytespill
         private void LeftMovement()
         {
             //move
-            y = y - 5f;
-            current = ship_up;
+            
+
+            switch (this.life)
+            {
+                case 3:
+                default:
+                    y = y - 5f;
+                    current = ship_up;
+                    break;
+                case 2:
+                    y = y - 2f;
+                    current = ship_ruined_up;
+                    break;
+                case 1:
+                    y = y - 1f;
+                    current = ship_sinking_up;
+                    break;
+            }
 
             if (y <= 0 + (screenMargin))
                 currentMovement = Movement.Top;
