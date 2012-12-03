@@ -51,6 +51,24 @@ namespace Skytespill
             this.ResumeLayout(false);
         }
 
+        private void hitCheck(boat b) {
+            for (int i = 0; i < bullet_list.Count; i++)
+            {
+
+                if (b.BoatArea.IntersectsWith(bullet_list[i].BulletArea))
+                {
+                    b.Life--;
+                    bullet_list[i].Active = false;
+                }
+                if(b.Life <= 0) {
+                    boat_list.Remove(b);
+                    
+                }
+            }
+        }
+
+       
+
         private void DrawPlayer(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -65,12 +83,17 @@ namespace Skytespill
             g.DrawImage(castle, deskW / 2 - castle.Width / 2 - canon.Width / 2, deskH / 2 - castle.Height / 2 - canon.Height / 2);
 
             //bullet.draw(g);
+
             foreach (boat b in boat_list)
             {
-                b.draw(g);
+               
                 b.moveBoat();
+                b.draw(g);
+                
             }
+
             
+
             
             foreach(Shot b in bullet_list)
             {
@@ -79,8 +102,28 @@ namespace Skytespill
                 if (b.Active == true)
                 {
                     b.moveShot();
-                }   
+                }
+                else {
+                   
+                    b.X = -999999;
+                }
             }
+            boat_list.ForEach(hitCheck);
+
+ /*           for (int i = 0; i < boat_list.Count; i++ )
+            {
+                for (int i2 = 0; i < bullet_list.Count; i2++)
+                {
+                    Rectangle boatArea = boat_list[i].BoatArea;
+                    Rectangle bulletArea = bullet_list[i2].BulletArea;
+                    if(boatArea.IntersectsWith(bulletArea))
+                    {
+                        boat_list.RemoveAt(i);
+                    }
+                }
+            }*/
+
+
 
             g.TranslateTransform(x, y);
             g.RotateTransform(rotation);
@@ -111,6 +154,7 @@ namespace Skytespill
         private void game_Panel_KeyDown(object sender, KeyEventArgs e)
         {
 
+           
 
             if (e.KeyCode == Keys.B)
             {

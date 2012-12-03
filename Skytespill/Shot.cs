@@ -25,10 +25,18 @@ namespace Skytespill
             this.active = true;
         }
 
+        public Rectangle BulletArea {
+            get { return new Rectangle((int)this.x, (int)this.y, (int)15f, (int)15f); }
+        }
+
         public Boolean Active
         {
             get { return this.active; }
             set { active = value; }
+        }
+
+        public float X {
+            set { this.x = value; }
         }
 
         public void moveShot()

@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace Skytespill
 {
-    class boat
+    class boat : RectangleConverter
     {
         private float x, y;
         private Image current = global::Skytespill.Properties.Resources.ship_right;
@@ -25,6 +25,11 @@ namespace Skytespill
             this.y = screenMargin;
             this.screenheight = screenheight;
             this.screenwidth = screenwidth;
+        }
+
+        public Rectangle BoatArea
+        {
+            get { return new Rectangle((int)this.x, (int)this.y, 80, 80); }
         }
 
         public int Life
