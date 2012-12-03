@@ -74,6 +74,20 @@ namespace Skytespill.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap captain_10 {
+            get {
+                object obj = ResourceManager.GetObject("captain_10", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap captain_10_v2 {
+            get {
+                object obj = ResourceManager.GetObject("captain_10_v2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap castle {
             get {
                 object obj = ResourceManager.GetObject("castle", resourceCulture);

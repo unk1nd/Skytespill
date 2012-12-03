@@ -19,6 +19,8 @@ namespace Skytespill
         private int deskW = Screen.PrimaryScreen.Bounds.Width;
         private int deskH = Screen.PrimaryScreen.Bounds.Height;
 
+        private Image capt = global::Skytespill.Properties.Resources.captain_10_v2;
+
 
         List<Shot> bullet_list = new List<Shot>();
         List<boat> boat_list = new List<boat>();
@@ -142,6 +144,22 @@ namespace Skytespill
 
             //Player Handler
             player.draw(g);
+
+
+            // TODO fikse boss skipet
+            //g.DrawImage(capt,20,20,deskW/4, deskH/8);
+
+
+            // TODO Algoritme for skiprunder
+            // TODO Algoritmer for bossfight
+            // TODO Skyting fra skip
+            // TODO Legge til lyd og musikk
+            // TODO implementer meny, kontrollerinfo og credits
+            // TODO score system
+            // TODO whale respawn random
+            // TODO faste objekter
+            // TODO spawning av skip og level design
+
         }
 
         
