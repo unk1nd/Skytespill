@@ -12,6 +12,7 @@ namespace Skytespill
         private Form parent;  //En referanse til foreldrevinduet.
         private Image canon = global::Skytespill.Properties.Resources.canon;
         private Image castle = global::Skytespill.Properties.Resources.castle;
+        private Image player_life = global::Skytespill.Properties.Resources.life_0hit;
         private float x , y; 
         //private int canonSizeX = 39 , canonSizeY= 50;
         float rotation = 0;
@@ -22,6 +23,7 @@ namespace Skytespill
 
         List<Shot> bullet_list = new List<Shot>();
         List<boat> boat_list = new List<boat>();
+        List<whale> whale_list = new List<whale>();
         
         public game_Panel(Form _parent)
         {
@@ -110,6 +112,13 @@ namespace Skytespill
                 
             }
 
+            foreach (whale b in whale_list)
+            {
+
+                b.moveWhale();
+                b.draw(g);
+
+            }
             
 
             
@@ -151,6 +160,7 @@ namespace Skytespill
             g.RotateTransform(rotation);
             g.DrawImage(canon, player);
             g.ResetTransform();
+            g.DrawImage(player_life, deskW - 46, 1);
             
 
             String cordinates = "Cordinates: " + x + " - " + y + "";
@@ -206,6 +216,12 @@ namespace Skytespill
             {
                 Application.Exit();
             }
+            if (e.KeyCode == Keys.N)
+            {
+                    addwhale();
+                    Invalidate();
+            }
+
             if (e.KeyCode == Keys.Space)
             {
                 if (bullet_list.Count <= 5)
@@ -236,6 +252,11 @@ namespace Skytespill
         public void addboat()
         { 
             boat_list.Add(new boat(deskW, deskH));
+        }
+
+        public void addwhale()
+        {
+            whale_list.Add(new whale(deskW, deskH));
         }
 
         

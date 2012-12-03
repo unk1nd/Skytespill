@@ -154,6 +154,9 @@
   <data name="mountain_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mountain_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ocean_tile2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ocean_tile2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ship_2_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ship_2_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -216,5 +219,11 @@
   </data>
   <data name="ship_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ship_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="whale_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\whale_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="whale_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\whale_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

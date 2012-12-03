@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.game_Panel = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
@@ -37,7 +36,7 @@
             // game_Panel
             // 
             this.game_Panel.BackColor = System.Drawing.Color.Transparent;
-            this.game_Panel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("game_Panel.BackgroundImage")));
+            this.game_Panel.BackgroundImage = global::Skytespill.Properties.Resources.ocean_tile2;
             this.game_Panel.Cursor = System.Windows.Forms.Cursors.Default;
             this.game_Panel.Location = new System.Drawing.Point(0, 0);
             this.game_Panel.Name = "game_Panel";
