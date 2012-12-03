@@ -10,9 +10,10 @@ namespace Skytespill
     {
         private float x, y;
         private double angle;
-        private bool active;
+        private bool active, forward;
         private int xmax, ymax;
         private Image canonball = global::Skytespill.Properties.Resources.canonball;
+
 
         public Shot(float x, float y, double a, int xmax, int ymax)
         {
@@ -23,6 +24,7 @@ namespace Skytespill
             this.xmax = xmax;
             this.ymax = ymax;
             this.active = true;
+            this.forward = true;
         }
 
         public Rectangle BulletArea {
@@ -46,12 +48,27 @@ namespace Skytespill
             get { return this.y; }
         }
 
+        public void bounce() 
+        {
+            if (this.forward)
+                this.forward = false;
+            else
+                this.forward = true;
+        }
+        
         public void moveShot()
         {
             if (active)
             {
-                x += 7f * (float)Math.Cos(angle);
-                y += 7f * (float)Math.Sin(angle);
+
+                float dx = 7f;
+                float dy = 7f;
+
+                if(!this.forward) {
+                    dy = -dy;
+                }
+                x += dx * (float)Math.Cos(angle);
+                y += dy * (float)Math.Sin(angle);
 
                 //Deaktiverer seg selv hvis den ser at den er utenfor banen
                 if (x < 0 || x > xmax || y < 0 || y > ymax)

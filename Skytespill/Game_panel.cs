@@ -86,6 +86,19 @@ namespace Skytespill
             }
         }
 
+        private void WhaleHit(whale b, Graphics g)
+        {
+            for (int i = 0; i < bullet_list.Count; i++)
+            {
+
+                if (b.WhaleArea.IntersectsWith(bullet_list[i].BulletArea))
+                {
+                    bullet_list[i].bounce();
+                    
+                }
+            }
+        }
+
        
 
         private void DrawGame(PaintEventArgs e)
@@ -99,6 +112,7 @@ namespace Skytespill
             //WhaleHandler
             whale_list.ForEach(Item =>
             {
+                WhaleHit(Item, g);
                 Item.moveWhale();
                 Item.draw(g);
             });

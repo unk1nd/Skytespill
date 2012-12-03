@@ -10,8 +10,6 @@ namespace Skytespill
     {
         private float x, y, rotation;
         private Image canon = global::Skytespill.Properties.Resources.canon;
-        
-
 
         public Player(int screenwidth, int screenheight)
         {
@@ -21,9 +19,7 @@ namespace Skytespill
         }
 
         public void draw(System.Drawing.Graphics g) {
-
-            
-
+          
             g.TranslateTransform(this.x, this.y);
             g.RotateTransform(rotation);
             g.DrawImage(canon, (0 - canon.Width / 2), (0 - canon.Height / 2), canon.Width, canon.Height);
