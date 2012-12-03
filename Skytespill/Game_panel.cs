@@ -94,66 +94,46 @@ namespace Skytespill
             Graphics g = e.Graphics;
             this.TegneGrid(g);
 
-            x = ( deskW / 2) - (canon.Width / 2);
-            y = ( deskH / 2) - (canon.Height / 2);
-
-
-            //Rectangle player = new Rectangle(x / canonSizeX * canonSizeX, y / canonSizeY * canonSizeY, canonSizeX, canonSizeY);
-            Rectangle player = new Rectangle(-20, -25, 40, 50);
             g.DrawImage(castle, deskW / 2 - castle.Width / 2 - canon.Width / 2, deskH / 2 - castle.Height / 2 - canon.Height / 2);
 
-            //bullet.draw(g);
-
-            foreach (boat b in boat_list)
+            //WhaleHandler
+            whale_list.ForEach(Item =>
             {
-               
-                b.moveBoat();
-                b.draw(g);
-                
-            }
+                Item.moveWhale();
+                Item.draw(g);
+            });
 
-            foreach (whale b in whale_list)
-            {
-
-                b.moveWhale();
-                b.draw(g);
-
-            }
-            
-
-            
-            foreach(Shot b in bullet_list)
-            {
-                b.draw(g);
-
-                if (b.Active == true)
-                {
-                    b.moveShot();
-                }
-                else {
-                    
-                    b.X = -999999;
-                }
-            }
-            
+            // Boathandler
             boat_list.ForEach(Item =>
-                {
-                    hitCheck(Item, g);
-                });
-
- /*           for (int i = 0; i < boat_list.Count; i++ )
             {
-                for (int i2 = 0; i < bullet_list.Count; i2++)
-                {
-                    Rectangle boatArea = boat_list[i].BoatArea;
-                    Rectangle bulletArea = bullet_list[i2].BulletArea;
-                    if(boatArea.IntersectsWith(bulletArea))
-                    {
-                        boat_list.RemoveAt(i);
-                    }
-                }
-            }*/
+                hitCheck(Item, g);
+                Item.moveBoat();
+                Item.draw(g);
+            });
 
+            //Bullethandler
+            bullet_list.ForEach(Item =>
+            {
+                if (Item.Active == true)
+                {
+                    Item.moveShot();
+                }
+                else
+                {
+                    Item.X = -999999;
+                }
+                Item.draw(g);
+            });
+
+            //Player Handler
+
+            //Finner center for Canon bilde.
+            x = ( deskW / 2);
+            y = ( deskH / 2);
+
+
+            Rectangle player = new Rectangle(-20, -25, 40, 50);
+            
 
 
             g.TranslateTransform(x, y);
@@ -161,13 +141,7 @@ namespace Skytespill
             g.DrawImage(canon, player);
             g.ResetTransform();
             g.DrawImage(player_life, deskW - 46, 1);
-            
 
-            String cordinates = "Cordinates: " + x + " - " + y + "";
-            Font drawFont2 = new Font("Arial", 12);
-            SolidBrush drawBrush = new SolidBrush(Color.Black);
-            PointF drawPoint = new PointF(1.0F, 1.0F);
-            g.DrawString(rotation.ToString(), drawFont2, drawBrush, drawPoint);
         }
 
         
