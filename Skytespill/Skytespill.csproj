@@ -56,6 +56,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="island.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -194,6 +195,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\whale_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\castle_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\castle_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\castle_3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

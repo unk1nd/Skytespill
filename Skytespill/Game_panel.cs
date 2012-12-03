@@ -11,14 +11,14 @@ namespace Skytespill
     class game_Panel : Panel
     {
         private Form parent;  //En referanse til foreldrevinduet.
-        private Image canon = global::Skytespill.Properties.Resources.canon;
-        private Image castle = global::Skytespill.Properties.Resources.castle;
-        private Image player_life = global::Skytespill.Properties.Resources.life_0hit;
+        
+        
+        
         private Player player;
+        private island island;
         private int deskW = Screen.PrimaryScreen.Bounds.Width;
         private int deskH = Screen.PrimaryScreen.Bounds.Height;
 
-        
 
         List<Shot> bullet_list = new List<Shot>();
         List<boat> boat_list = new List<boat>();
@@ -38,6 +38,7 @@ namespace Skytespill
             this.SetStyle(ControlStyles.Selectable | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
             this.Invalidate();
             this.player = new Player(deskW, deskH);
+            this.island = new island(deskW, deskH);
             
         }
 
@@ -59,8 +60,6 @@ namespace Skytespill
         }
        
        
-
-
         private void InitializeComponent()
         {
             
@@ -95,8 +94,7 @@ namespace Skytespill
             this.TegneGrid(g);
 
             //Static images
-            g.DrawImage(castle, (deskW / 2) - (castle.Width / 2), (deskH / 2) - (castle.Height / 2));
-            g.DrawImage(player_life, deskW - 46, 1, player_life.Width, player_life.Height);
+            island.draw(g);
 
             //WhaleHandler
             whale_list.ForEach(Item =>
