@@ -132,13 +132,14 @@ namespace Skytespill
             y = ( deskH / 2);
 
 
-            Rectangle player = new Rectangle(-20, -25, 40, 50);
+            //Rectangle player = new Rectangle(-20, -25, 40, 50);
             
 
 
             g.TranslateTransform(x, y);
             g.RotateTransform(rotation);
-            g.DrawImage(canon, player);
+            g.DrawImage(canon, (0 - canon.Width/2), (0-canon.Height/2), canon.Width, canon.Height);
+            // g.DrawImage(canonball, x - 7.5f, y - 7.5f, 15f, 15f);
             g.ResetTransform();
             g.DrawImage(player_life, deskW - 46, 1);
 
