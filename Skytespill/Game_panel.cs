@@ -94,7 +94,7 @@ namespace Skytespill
             Graphics g = e.Graphics;
             this.TegneGrid(g);
 
-            g.DrawImage(castle, deskW / 2 - castle.Width / 2 - canon.Width / 2, deskH / 2 - castle.Height / 2 - canon.Height / 2);
+            g.DrawImage(castle, (deskW / 2) - (castle.Width / 2), (deskH / 2) - (castle.Height / 2));
 
             //WhaleHandler
             whale_list.ForEach(Item =>
