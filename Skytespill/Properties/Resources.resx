@@ -136,14 +136,71 @@
   <data name="explosion_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\explosion_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="life_0hit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\life_0hit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="life_1hit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\life_1hit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="life_2hit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\life_2hit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="life_3hit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\life_3hit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mountain_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mountain_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mountain_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mountain_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_2_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_2_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_2_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_2_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_2_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_2_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_2_ruined_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_2_ruined_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_2_ruined_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_2_ruined_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_2_ruined_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_2_ruined_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_2_ruined_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_2_ruined_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_2_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_2_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ship_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ship_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ship_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ship.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ship_left1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ship_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ship_rightt.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_ruined_down" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_ruined_down.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_ruined_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_ruined_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_ruined_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_ruined_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_ruined_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_ruined_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ship_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ship_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

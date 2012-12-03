@@ -14,6 +14,7 @@ namespace Skytespill
         private Image ship_right = global::Skytespill.Properties.Resources.ship_right;
         private Image ship_up = global::Skytespill.Properties.Resources.ship_up;
         private Image ship_down = global::Skytespill.Properties.Resources.ship_down;
+
         private int life = 3;
         private int screenwidth;
         private int screenheight;
@@ -70,6 +71,7 @@ namespace Skytespill
             }
 
         }
+
         private Movement currentMovement = Movement.Top;
         private void topMovement()
         {

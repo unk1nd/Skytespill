@@ -115,6 +115,63 @@
   <ItemGroup>
     <None Include="Resources\castle.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\life_0hit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\life_1hit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\life_2hit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\life_3hit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mountain_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mountain_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_2_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_2_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_2_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_2_ruined_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_2_ruined_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_2_ruined_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_2_ruined_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_2_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_ruined_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_ruined_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_ruined_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_ruined_up.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -102,6 +102,104 @@ namespace Skytespill.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap life_0hit {
+            get {
+                object obj = ResourceManager.GetObject("life_0hit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap life_1hit {
+            get {
+                object obj = ResourceManager.GetObject("life_1hit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap life_2hit {
+            get {
+                object obj = ResourceManager.GetObject("life_2hit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap life_3hit {
+            get {
+                object obj = ResourceManager.GetObject("life_3hit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap mountain_1 {
+            get {
+                object obj = ResourceManager.GetObject("mountain_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap mountain_2 {
+            get {
+                object obj = ResourceManager.GetObject("mountain_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ship_2_down {
+            get {
+                object obj = ResourceManager.GetObject("ship_2_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ship_2_left {
+            get {
+                object obj = ResourceManager.GetObject("ship_2_left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ship_2_right {
+            get {
+                object obj = ResourceManager.GetObject("ship_2_right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ship_2_ruined_down {
+            get {
+                object obj = ResourceManager.GetObject("ship_2_ruined_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ship_2_ruined_left {
+            get {
+                object obj = ResourceManager.GetObject("ship_2_ruined_left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ship_2_ruined_right {
+            get {
+                object obj = ResourceManager.GetObject("ship_2_ruined_right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ship_2_ruined_up {
+            get {
+                object obj = ResourceManager.GetObject("ship_2_ruined_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ship_2_up {
+            get {
+                object obj = ResourceManager.GetObject("ship_2_up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap ship_down {
             get {
                 object obj = ResourceManager.GetObject("ship_down", resourceCulture);
@@ -116,9 +214,44 @@ namespace Skytespill.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap ship_left1 {
+            get {
+                object obj = ResourceManager.GetObject("ship_left1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap ship_right {
             get {
                 object obj = ResourceManager.GetObject("ship_right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ship_ruined_down {
+            get {
+                object obj = ResourceManager.GetObject("ship_ruined_down", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ship_ruined_left {
+            get {
+                object obj = ResourceManager.GetObject("ship_ruined_left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ship_ruined_right {
+            get {
+                object obj = ResourceManager.GetObject("ship_ruined_right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap ship_ruined_up {
+            get {
+                object obj = ResourceManager.GetObject("ship_ruined_up", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
