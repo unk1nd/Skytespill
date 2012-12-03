@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
+using System.Threading;
 
 namespace Skytespill
 {
@@ -13,9 +14,7 @@ namespace Skytespill
         private Image canon = global::Skytespill.Properties.Resources.canon;
         private Image castle = global::Skytespill.Properties.Resources.castle;
         private Image player_life = global::Skytespill.Properties.Resources.life_0hit;
-        private float x , y; 
-        //private int canonSizeX = 39 , canonSizeY= 50;
-        float rotation = 0;
+        private Player player;
         private int deskW = Screen.PrimaryScreen.Bounds.Width;
         private int deskH = Screen.PrimaryScreen.Bounds.Height;
 
@@ -38,6 +37,7 @@ namespace Skytespill
             this.UpdateStyles();
             this.SetStyle(ControlStyles.Selectable | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
             this.Invalidate();
+            this.player = new Player(deskW, deskH);
             
         }
 
@@ -89,12 +89,14 @@ namespace Skytespill
 
        
 
-        private void DrawPlayer(PaintEventArgs e)
+        private void DrawGame(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             this.TegneGrid(g);
 
+            //Static images
             g.DrawImage(castle, (deskW / 2) - (castle.Width / 2), (deskH / 2) - (castle.Height / 2));
+            g.DrawImage(player_life, deskW - 46, 1, player_life.Width, player_life.Height);
 
             //WhaleHandler
             whale_list.ForEach(Item =>
@@ -125,24 +127,9 @@ namespace Skytespill
                 Item.draw(g);
             });
 
+
             //Player Handler
-
-            //Finner center for Canon bilde.
-            x = ( deskW / 2);
-            y = ( deskH / 2);
-
-
-            //Rectangle player = new Rectangle(-20, -25, 40, 50);
-            
-
-
-            g.TranslateTransform(x, y);
-            g.RotateTransform(rotation);
-            g.DrawImage(canon, (0 - canon.Width/2), (0-canon.Height/2), canon.Width, canon.Height);
-            // g.DrawImage(canonball, x - 7.5f, y - 7.5f, 15f, 15f);
-            g.ResetTransform();
-            g.DrawImage(player_life, deskW - 46, 1);
-
+            player.draw(g);
         }
 
         
@@ -154,7 +141,7 @@ namespace Skytespill
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            DrawPlayer(e);
+            DrawGame(e);
             base.OnPaint(e);
         }
 
@@ -165,25 +152,29 @@ namespace Skytespill
 
             if (e.KeyCode == Keys.B)
             {
-                addboat();
+                
+
+                ThreadStart ts = new ThreadStart(addboat);
+                Thread boatThread = new Thread(ts);
+                boatThread.Start();
                 Invalidate();
             }
 
             if (e.KeyCode == Keys.D)
             {
-                rotation += 5;
-                if (rotation > 360)
+                player.Rotation += 5;
+                if (player.Rotation > 360)
                 {
-                    rotation = 0;
+                    player.Rotation = 0;
                 }
                 Invalidate();
             }
             if (e.KeyCode == Keys.A)
             {
-                rotation -= 5;
-                if (rotation < 0)
+                player.Rotation -= 5;
+                if (player.Rotation < 0)
                 {
-                    rotation = 360;
+                    player.Rotation = 360;
                 }
                 Invalidate();
             }
@@ -193,17 +184,22 @@ namespace Skytespill
             }
             if (e.KeyCode == Keys.N)
             {
-                    addwhale();
+
+
+                ThreadStart ts = new ThreadStart(addwhale);
+                Thread whaleThread = new Thread(ts);
+                    whaleThread.Start();
                     Invalidate();
             }
 
             if (e.KeyCode == Keys.Space)
             {
-                if (bullet_list.Count <= 5)
-                {
-                    addbullet();
+                
+                    ThreadStart ts = new ThreadStart(addbullet);
+                    Thread bulletThread = new Thread(ts);
+                    bulletThread.Start();
                     Invalidate();
-                }
+                
                 for (int i = 0; i < bullet_list.Count; i++)
                 {
                     if(bullet_list[i].Active == false)
@@ -221,16 +217,19 @@ namespace Skytespill
 
         public void addbullet()
         {
-            bullet_list.Add(new Shot(x, y, rotation, deskW , deskH));
+            bullet_list.Add(new Shot(player.X, player.Y, player.Rotation, deskW , deskH));
         }
 
         public void addboat()
         { 
+           
+            
             boat_list.Add(new boat(deskW, deskH));
         }
 
         public void addwhale()
         {
+
             whale_list.Add(new whale(deskW, deskH));
         }
 
