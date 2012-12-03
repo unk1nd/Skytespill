@@ -147,7 +147,7 @@ namespace Skytespill
 
 
             // TODO fikse boss skipet
-            //g.DrawImage(capt,20,20,deskW/4, deskH/8);
+            g.DrawImage(capt,20,20,deskW/4, deskH/8);
 
 
             // TODO Algoritme for skiprunder
