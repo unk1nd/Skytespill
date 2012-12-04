@@ -15,13 +15,17 @@ namespace Skytespill
         Form parent;
         GamePanel gamePanel;
         SoundPlayer menuTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Bolt___Vodka_Polka);
+        public int DeskH = Screen.PrimaryScreen.Bounds.Height;
+        public int DeskW = Screen.PrimaryScreen.Bounds.Width;
         
         int selection = 0;
         public MenuPanel(Form _parent) 
         {
             this.parent = _parent;
-            this.Height = parent.Height;
-            this.Width = parent.Width;
+            this.Size = new Size(DeskW,DeskH);
+            //this.Height = DeskH;
+            //this.Width = DeskW;
+            //this.SetBounds(0, 0, DeskW, DeskH);
             BackgroundImage = global::Skytespill.Properties.Resources.menu_bg;
             BackgroundImageLayout = ImageLayout.Stretch;
             menuTheme.PlayLooping();
@@ -54,14 +58,14 @@ namespace Skytespill
             creditsState = creditsButtonHover;
             if (this.selection == 3)
                 exitState = exitButtonHover;
-            
-            g.DrawImage(playState, this.Width / 2 , this.Height / 4, playButton.Width, playButton.Height);
+
+            g.DrawImage(playState, DeskW / 2, DeskH / 4, playButton.Width, playButton.Height);
 
 
-            g.DrawImage(controlsState, (this.Width - controlsButton.Width), (this.Height / 4 + controlsButton.Height - 30), controlsButton.Width, controlsButton.Height);
-            g.DrawImage(creditsState, (this.Width / 2), (this.Height / 4 + creditsButton.Height / 2 * 3 + 50), creditsButton.Width, creditsButton.Height);
+            g.DrawImage(controlsState, (DeskW - controlsButton.Width), (DeskH / 4 + controlsButton.Height - 30), controlsButton.Width, controlsButton.Height);
+            g.DrawImage(creditsState, (DeskW / 2), (DeskH / 4 + creditsButton.Height / 2 * 3 + 50), creditsButton.Width, creditsButton.Height);
 
-            g.DrawImage(exitState, (this.Width - exitButton.Width), (this.Height - exitButton.Height), exitButton.Width, exitButton.Height);
+            g.DrawImage(exitState, (DeskW - exitButton.Width), (DeskH - exitButton.Height), exitButton.Width, exitButton.Height);
 
 
 
