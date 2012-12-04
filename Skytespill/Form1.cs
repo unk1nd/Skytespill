@@ -11,31 +11,23 @@ namespace Skytespill
 {
     public partial class Form1 : Form
     {
-        private game_Panel gamepanel;
-        public int deskHeight = Screen.PrimaryScreen.Bounds.Height;
-        public int deskWidth = Screen.PrimaryScreen.Bounds.Width;
-
+        MenuPanel menuPanel;
+        
         public Form1()
         {
+
+            this.Height = Screen.PrimaryScreen.Bounds.Height;
+            this.Width = Screen.PrimaryScreen.Bounds.Width;
+            this.menuPanel = new MenuPanel(this);
+           
+            this.Controls.Add(menuPanel);
             InitializeComponent();
-            this.Controls.Add(this.game_Panel);
-            this.gamepanel = new game_Panel(this);
-            gamepanel.Dock = DockStyle.Fill;
-            game_Panel.Controls.Add(this.gamepanel);
+        }
+
+        private void FormKeyDownEvent(object sender, KeyEventArgs e)
+        {
+                menuPanel.MenuPanelKeyDownEvent(this, e);    
             
-
-            game_Panel.Width = deskWidth;
-            game_Panel.Height = deskHeight;
-        }
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            gamepanel.keydown(e);
-        }
-
-        private void tick(object sender, EventArgs e)
-        {
-            gamepanel.t_Tick();
         }
 
     }

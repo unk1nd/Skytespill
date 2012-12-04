@@ -28,46 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.game_Panel = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
-            // 
-            // game_Panel
-            // 
-            this.game_Panel.BackColor = System.Drawing.Color.Transparent;
-            this.game_Panel.BackgroundImage = global::Skytespill.Properties.Resources.ocean_tile2;
-            this.game_Panel.Cursor = System.Windows.Forms.Cursors.Default;
-            this.game_Panel.Location = new System.Drawing.Point(0, 0);
-            this.game_Panel.Name = "game_Panel";
-            this.game_Panel.Size = new System.Drawing.Size(849, 445);
-            this.game_Panel.TabIndex = 0;
-            // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 10;
-            this.timer1.Tick += new System.EventHandler(this.tick);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(873, 469);
-            this.Controls.Add(this.game_Panel);
+            this.ClientSize = new System.Drawing.Size(1164, 577);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormKeyDownEvent);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel game_Panel;
-        private System.Windows.Forms.Timer timer1;
     }
 }
 
