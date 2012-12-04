@@ -10,6 +10,7 @@ namespace Skytespill
     class CreditContent
     {
         private float x, y;
+
         public int DeskH = Screen.PrimaryScreen.Bounds.Height;
         public int DeskW = Screen.PrimaryScreen.Bounds.Width;
         

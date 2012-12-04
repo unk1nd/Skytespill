@@ -15,6 +15,8 @@ namespace Skytespill
         Form parent;
         GamePanel gamePanel;
         CreditsPanel creditPanel;
+        ControlsPanel controlPanel;
+
         SoundPlayer menuTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Bolt___Vodka_Polka);
         public int DeskH = Screen.PrimaryScreen.Bounds.Height;
         public int DeskW = Screen.PrimaryScreen.Bounds.Width;
@@ -30,6 +32,7 @@ namespace Skytespill
             BackgroundImage = global::Skytespill.Properties.Resources.menu_bg;
             BackgroundImageLayout = ImageLayout.Stretch;
             menuTheme.PlayLooping();
+            Cursor.Hide();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -96,6 +99,15 @@ namespace Skytespill
                     menuTheme.PlayLooping();
                 }
             }
+            else if (controlPanel != null)
+            {
+                if (e.KeyCode == Keys.Escape)
+                {
+                    this.Controls.Remove(controlPanel);
+                    controlPanel = null;
+                    menuTheme.PlayLooping();
+                }
+            }
 
             else
             {
@@ -146,6 +158,12 @@ namespace Skytespill
                     {
                         creditPanel = new CreditsPanel(this);
                         this.Controls.Add(creditPanel);
+                        menuTheme.Stop();
+                    }
+                    if (this.selection == 1)
+                    {
+                        controlPanel = new ControlsPanel(this);
+                        this.Controls.Add(controlPanel);
                         menuTheme.Stop();
                     }
                 }

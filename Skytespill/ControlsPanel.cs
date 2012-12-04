@@ -7,14 +7,13 @@ using System.Drawing;
 
 namespace Skytespill
 {
-    class CreditsPanel : Panel
+    class ControlsPanel : Panel
     {
         private Panel parent;
         private int DeskW, DeskH;
+        private Image ControlImage = global::Skytespill.Properties.Resources.controls;
 
-        CreditContent cred = new CreditContent();
-
-        public CreditsPanel(Panel _parent)
+        public ControlsPanel(Panel _parent)
         {
             
             parent = _parent;
@@ -32,13 +31,13 @@ namespace Skytespill
             Cursor.Hide();
         }
 
-        private void credrole(PaintEventArgs e)
+        private void ControllDraw(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
             this.TegneGrid(g);
 
-            cred.Move();
-            cred.draw(g);
+            g.DrawImage(ControlImage, 0, 0, DeskW, DeskH);
+            
             Invalidate();
 
         }
@@ -50,7 +49,7 @@ namespace Skytespill
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            credrole(e);
+            ControllDraw(e);
             base.OnPaint(e);
         }
     }
