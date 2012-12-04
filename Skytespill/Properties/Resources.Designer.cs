@@ -136,6 +136,13 @@ namespace Skytespill.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap credit_test {
+            get {
+                object obj = ResourceManager.GetObject("credit_test", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap credits {
             get {
                 object obj = ResourceManager.GetObject("credits", resourceCulture);

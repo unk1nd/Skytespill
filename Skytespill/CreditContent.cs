@@ -13,20 +13,20 @@ namespace Skytespill
         public int DeskH = Screen.PrimaryScreen.Bounds.Height;
         public int DeskW = Screen.PrimaryScreen.Bounds.Width;
         
-        private Image castle1 = global::Skytespill.Properties.Resources.credits;
+        private Image castle1 = global::Skytespill.Properties.Resources.credit_test;
         
 
         public CreditContent()
         {
-            this.y = 0;
-            this.x = (DeskW / 2 ) - ( castle1.Width / 2);
+            this.y = DeskH;
+            this.x = 0;
             
         }
-        public void Move() { this.y -= 0.1f; }
+        public void Move() { this.y -= 0.3f; }
 
         public void draw(System.Drawing.Graphics g) {
 
-                g.DrawImage(castle1, x, y, DeskW/2, DeskH*2);
+                g.DrawImage(castle1, x, y, DeskW, DeskH*3);
             
         }
     }

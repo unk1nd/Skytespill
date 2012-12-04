@@ -80,13 +80,23 @@ namespace Skytespill
             {
                 gamePanel.game_Panel_KeyDown(this, e);
                 
-                if (e.KeyCode == Keys.M)
+                if (e.KeyCode == Keys.Escape)
                 {
                     this.Controls.Remove(gamePanel);
                     gamePanel = null;
                     menuTheme.PlayLooping();
                 }
             }
+            else if (creditPanel != null)
+            {
+                if (e.KeyCode == Keys.Escape)
+                {
+                    this.Controls.Remove(creditPanel);
+                    creditPanel = null;
+                    menuTheme.PlayLooping();
+                }
+            }
+
             else
             {
 
@@ -100,7 +110,8 @@ namespace Skytespill
                 }
 
 
-                if(e.KeyCode == Keys.Up){
+                if (e.KeyCode == Keys.Up)
+                {
 
 
 
@@ -120,7 +131,7 @@ namespace Skytespill
 
                 if (e.KeyCode == Keys.Enter)
                 {
-                    if (this.selection == 0) 
+                    if (this.selection == 0)
                     {
                         gamePanel = new GamePanel(this);
                         this.Controls.Add(gamePanel);
@@ -139,7 +150,7 @@ namespace Skytespill
                     }
                 }
 
-                
+
             }
         }
 
