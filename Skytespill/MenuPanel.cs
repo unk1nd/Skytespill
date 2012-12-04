@@ -14,6 +14,7 @@ namespace Skytespill
     {
         Form parent;
         GamePanel gamePanel;
+        CreditsPanel creditPanel;
         SoundPlayer menuTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Bolt___Vodka_Polka);
         public int DeskH = Screen.PrimaryScreen.Bounds.Height;
         public int DeskW = Screen.PrimaryScreen.Bounds.Width;
@@ -129,6 +130,12 @@ namespace Skytespill
                     if (this.selection == 3)
                     {
                         Application.Exit();
+                    }
+                    if (this.selection == 2)
+                    {
+                        creditPanel = new CreditsPanel(this);
+                        this.Controls.Add(creditPanel);
+                        menuTheme.Stop();
                     }
                 }
 

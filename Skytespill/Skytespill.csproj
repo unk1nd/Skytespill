@@ -47,6 +47,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="boat.cs" />
+    <Compile Include="CreditContent.cs" />
+    <Compile Include="CreditsPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="EndGamePanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -250,6 +254,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\exit_btn_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\credits.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
