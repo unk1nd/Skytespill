@@ -207,12 +207,6 @@
     <None Include="Resources\castle_1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\castle_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\castle_3.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\captain_10.png" />
   </ItemGroup>
   <ItemGroup>
@@ -244,6 +238,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\controll_btn_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\castle_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\castle_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit_btn_high.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit_btn_normal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

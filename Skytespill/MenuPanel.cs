@@ -46,8 +46,8 @@ namespace Skytespill
             Image creditsButtonHover = global::Skytespill.Properties.Resources.credits_btn_hover;
             Image creditsState = creditsButton;
 
-            Image exitButton = global::Skytespill.Properties.Resources.credits_btn;
-            Image exitButtonHover = global::Skytespill.Properties.Resources.credits_btn_hover;
+            Image exitButton = global::Skytespill.Properties.Resources.exit_btn;
+            Image exitButtonHover = global::Skytespill.Properties.Resources.exit_btn_hover;
             Image exitState = exitButton;
             
             if(this.selection == 0)
@@ -62,8 +62,8 @@ namespace Skytespill
             g.DrawImage(playState, DeskW / 2, DeskH / 4, playButton.Width, playButton.Height);
 
 
-            g.DrawImage(controlsState, (DeskW - controlsButton.Width), (DeskH / 4 + controlsButton.Height - 30), controlsButton.Width, controlsButton.Height);
-            g.DrawImage(creditsState, (DeskW / 2), (DeskH / 4 + creditsButton.Height / 2 * 3 + 50), creditsButton.Width, creditsButton.Height);
+            g.DrawImage(controlsState, (DeskW - controlsButton.Width), (DeskH / 4 + controlsButton.Height - 80), controlsButton.Width, controlsButton.Height);
+            g.DrawImage(creditsState, (DeskW / 2), (DeskH / 4 + creditsButton.Height / 2 * 3 ), creditsButton.Width, creditsButton.Height);
 
             g.DrawImage(exitState, (DeskW - exitButton.Width), (DeskH - exitButton.Height), exitButton.Width, exitButton.Height);
 
