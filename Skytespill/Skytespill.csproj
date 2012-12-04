@@ -234,16 +234,16 @@
     <None Include="Resources\play_btn_normal.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\controll_btn_high.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\controll_btn_normal.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\credits_btn_high.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\credits_btn_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\controll_btn_high.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\controll_btn_normal.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

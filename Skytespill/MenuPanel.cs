@@ -24,7 +24,7 @@ namespace Skytespill
             this.Width = parent.Width;
             BackgroundImage = global::Skytespill.Properties.Resources.menu_bg;
             BackgroundImageLayout = ImageLayout.Stretch;
-            //menuTheme.PlayLooping();
+            menuTheme.PlayLooping();
         }
 
         protected override void OnPaint(PaintEventArgs e)
