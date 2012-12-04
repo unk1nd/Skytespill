@@ -17,12 +17,6 @@ namespace Skytespill
 
         public Form1()
         {
-
-            
-            
-
-       
-
             this.menuPanel = new MenuPanel(this);
             this.menuPanel.Size = new Size(DeskW, DeskH);
             
@@ -33,7 +27,6 @@ namespace Skytespill
         private void FormKeyDownEvent(object sender, KeyEventArgs e)
         {
                 menuPanel.MenuPanelKeyDownEvent(this, e);    
-            
         }
 
     }
