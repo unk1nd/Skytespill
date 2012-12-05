@@ -13,39 +13,49 @@ namespace Skytespill
 
 
         // liv bilder
-        private Image capt = global::Skytespill.Properties.Resources.captain_10_v2;
+        private Image liv10 = global::Skytespill.Properties.Resources.captain_10;
+        private Image liv9 = global::Skytespill.Properties.Resources.captain_9;
+        private Image liv8 = global::Skytespill.Properties.Resources.captain_8;
+        private Image liv7 = global::Skytespill.Properties.Resources.captain_7;
+        private Image liv6 = global::Skytespill.Properties.Resources.captain_6;
+        private Image liv5 = global::Skytespill.Properties.Resources.captain_5;
+        private Image liv4 = global::Skytespill.Properties.Resources.captain_4;
+        private Image liv3 = global::Skytespill.Properties.Resources.captain_3;
+        private Image liv2 = global::Skytespill.Properties.Resources.captain_2;
+        private Image liv1 = global::Skytespill.Properties.Resources.captain_1;
+        private Image liv0 = global::Skytespill.Properties.Resources.captain_0;
 
         //boss båt bilder
         private Image current = global::Skytespill.Properties.Resources.ship_boss_up;
 
         private Image boss_r = global::Skytespill.Properties.Resources.ship_boss_right;
         private Image boss_l = global::Skytespill.Properties.Resources.ship_boss_left;
-        
-        private int life = 9;
+
+        private int life = 10;
         private int screenwidth;
         private int screenheight;
         private int screenMargin = 50;
-        private int shotPointX, shotPointY;
+        private double shotPointX, shotPointY, shotPointZ;
 
         private List<shipShot> shipbullet_list = new List<shipShot>();
 
         private Random randomX = new Random();
         private Random randomY = new Random();
+        private Random randomZ = new Random();
 
         public boss(int screenwidth, int screenheight)
         {
 
-            
+
             this.x = screenwidth / 2;
             this.y = screenheight;
             this.screenheight = screenheight;
             this.screenwidth = screenwidth;
-            this.shotPointX = randomX.Next(500, screenwidth - 500);
-            this.shotPointY = randomY.Next(200, screenheight - 200);
-            
+            RandomShotSpots();
+
         }
 
-        public Rectangle BoatArea
+        public Rectangle BossArea
         {
             get { return new Rectangle((int)this.x, (int)this.y, current.Width, current.Height); }
         }
@@ -58,10 +68,10 @@ namespace Skytespill
 
         public void moveBoat()
         {
-            
+
             switch (currentMovement)
             {
-                
+
                 case Movement.Right:
                     rightMovement();
                     break;
@@ -76,7 +86,7 @@ namespace Skytespill
         }
 
         private Movement currentMovement = Movement.Bottom;
-        
+
         private void rightMovement()
         {
             current = boss_r;
@@ -85,12 +95,32 @@ namespace Skytespill
             {
                 shot(3);
             }
-            
+            else if (x == this.shotPointY)
+            {
+                shot(3);
+            }
+            else if (x == this.shotPointZ)
+            {
+                shot(3);
+            }
             x = x + 5f;
 
-
             if (x >= screenwidth - (400 + current.Width))
+            {
+                RandomShotSpots();
                 currentMovement = Movement.Left;
+            }
+        }
+
+
+        private void RandomShotSpots()
+        {
+            this.shotPointX = randomX.Next(screenMargin, screenwidth - screenMargin);
+            this.shotPointY = randomY.Next(screenMargin, screenwidth - screenMargin);
+            this.shotPointZ = randomY.Next(screenMargin, screenwidth - screenMargin);
+            this.shotPointX = R(this.shotPointX);
+            this.shotPointY = R(this.shotPointY);
+            this.shotPointZ = R(this.shotPointZ);
         }
 
         private void BottomMovement()
@@ -107,12 +137,28 @@ namespace Skytespill
             //move
             if (x == this.shotPointX)
             {
-                shot(4);
+                shot(3);
+            }
+            else if (x == this.shotPointY)
+            {
+                shot(3);
+            }
+            else if (x == this.shotPointZ)
+            {
+                shot(3);
             }
             x = x - 5f;
 
             if (x <= 0 + (400))
+            {
+                RandomShotSpots();
                 currentMovement = Movement.Right;
+            }
+        }
+
+        public static double R(double x)
+        {
+            return Math.Round(x / 5, MidpointRounding.AwayFromZero) * 5;
         }
 
         private enum Movement { Right, Bottom, Left }
@@ -120,7 +166,30 @@ namespace Skytespill
         public void draw(System.Drawing.Graphics g)
         {
             g.DrawImage(current, x, y);
-            g.DrawImage(capt, 20, 20, screenwidth/ 4, screenheight / 8);
+
+            if (life == 10)
+                g.DrawImage(liv10, 20, 20, screenwidth / 4, screenheight / 8);
+            if (life == 9)
+                g.DrawImage(liv9, 20, 20, screenwidth / 4, screenheight / 8);
+            if (life == 8)
+                g.DrawImage(liv8, 20, 20, screenwidth / 4, screenheight / 8);
+            if (life == 7)
+                g.DrawImage(liv7, 20, 20, screenwidth / 4, screenheight / 8);
+            if (life == 6)
+                g.DrawImage(liv6, 20, 20, screenwidth / 4, screenheight / 8);
+            if (life == 5)
+                g.DrawImage(liv5, 20, 20, screenwidth / 4, screenheight / 8);
+            if (life == 4)
+                g.DrawImage(liv4, 20, 20, screenwidth / 4, screenheight / 8);
+            if (life == 3)
+                g.DrawImage(liv3, 20, 20, screenwidth / 4, screenheight / 8);
+            if (life == 2)
+                g.DrawImage(liv2, 20, 20, screenwidth / 4, screenheight / 8);
+            if (life == 1)
+                g.DrawImage(liv1, 20, 20, screenwidth / 4, screenheight / 8);
+            if (life == 0)
+                g.DrawImage(liv0, 20, 20, screenwidth / 4, screenheight / 8);
+
 
             shipbullet_list.ForEach(Item =>
             {
@@ -133,7 +202,9 @@ namespace Skytespill
 
         public void shot(int move)
         {
+            shipbullet_list.Add(new shipShot(x - 50, y, screenwidth, screenheight, move));
             shipbullet_list.Add(new shipShot(x, y, screenwidth, screenheight, move));
+            shipbullet_list.Add(new shipShot(x + 50, y, screenwidth, screenheight, move));
         }
     }
 }

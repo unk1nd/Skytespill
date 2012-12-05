@@ -219,9 +219,6 @@
     <None Include="Resources\castle_1.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\captain_10.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\captain_10_v2.png" />
   </ItemGroup>
   <ItemGroup>
@@ -292,6 +289,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\big_boss_2_0.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captain_0.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captain_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captain_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captain_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captain_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captain_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captain_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captain_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captain_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captain_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\captain_10.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
