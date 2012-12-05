@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 
-
 namespace Skytespill
 {
     class MenuPanel : Panel
@@ -22,23 +21,15 @@ namespace Skytespill
         {
             this.parent = _parent;
             this.Size = new Size(DeskW,DeskH);
-            //this.Height = DeskH;
-            //this.Width = DeskW;
-            //this.SetBounds(0, 0, DeskW, DeskH);
             BackgroundImage = global::Skytespill.Properties.Resources.menu_bg;
             BackgroundImageLayout = ImageLayout.Stretch;
             Cursor.Hide();
         }
 
-        public int Selection
-        {
-            get { return this.selection; }
-            set { this.selection = value; }
-        }
-
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
+            
             Image playButton = global::Skytespill.Properties.Resources.play_btn;
             Image playButtonHover = global::Skytespill.Properties.Resources.play_btn_hover;
             Image playState = playButton;
@@ -65,23 +56,15 @@ namespace Skytespill
                 exitState = exitButtonHover;
 
             g.DrawImage(playState, DeskW / 2, DeskH / 4, playButton.Width, playButton.Height);
-
-
             g.DrawImage(controlsState, (DeskW - controlsButton.Width), (DeskH / 4 + controlsButton.Height - 80), controlsButton.Width, controlsButton.Height);
             g.DrawImage(creditsState, (DeskW / 2), (DeskH / 4 + creditsButton.Height / 2 * 3 ), creditsButton.Width, creditsButton.Height);
-
             g.DrawImage(exitState, (DeskW - exitButton.Width), (DeskH - exitButton.Height), exitButton.Width, exitButton.Height);
-
-
         }
-        
-       
 
-        public void GamePanelKeyDownEvent(object sender, KeyEventArgs e) 
+        public int Selection
         {
-            
-
-
+            get { return this.selection; }
+            set { this.selection = value; }
         }
     }
 }
