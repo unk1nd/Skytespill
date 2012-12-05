@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace Skytespill
 {
-    class GamePanel : Form
+    class GamePanel : Panel
     {
         private Form parent;  //En referanse til foreldrevinduet.
         private Player player;
@@ -19,12 +19,13 @@ namespace Skytespill
         private List<Shot> bullet_list = new List<Shot>();
         private List<boat> boat_list = new List<boat>();
         private List<whale> whale_list = new List<whale>();
+        private List<isles> isles_list = new List<isles>();
 
         
 
         public GamePanel(Form _parent)
         {
-            this.TopLevel = false;
+            
             parent = _parent;
             deskW = parent.Width;
             deskH = parent.Height;
@@ -34,6 +35,7 @@ namespace Skytespill
             this.Width = deskW;
             this.Height = deskH;
 
+            addisles();
             
             //Viktig i forbindelse med animasjoner med mye bevegelse;     
             this.SetStyle(ControlStyles.DoubleBuffer |
@@ -42,7 +44,7 @@ namespace Skytespill
                         true);
             this.UpdateStyles();
             this.SetStyle(ControlStyles.Selectable | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            
             this.player = new Player(deskW, deskH);
             this.island = new island(deskW, deskH);
             Cursor.Hide();
@@ -68,6 +70,16 @@ namespace Skytespill
             this.SuspendLayout();
             this.KeyDown += new KeyEventHandler(this.game_Panel_KeyDown);
             this.ResumeLayout(false);
+        }
+
+
+        private void addisles() 
+        {
+            isles_list.Add(new isles(deskW, deskH, deskW / 3, deskH / 3));
+            isles_list.Add(new isles(deskW, deskH, deskW / 6, deskH / 6));
+            isles_list.Add(new isles(deskW, deskH, 800 + (deskW / 2), 300 + (deskH / 2)));
+            isles_list.Add(new isles(deskW, deskH, (deskW / 2) - 800, 300 + (deskH / 2)));
+            isles_list.Add(new isles(deskW, deskH, 500 + (deskW / 2), deskH / 3));
         }
 
         private void hitCheck(boat b, Graphics g)
@@ -140,23 +152,31 @@ namespace Skytespill
                 Item.draw(g);
             });
 
+            //Isles Handler
+            isles_list.ForEach(Item =>
+            {
+                //hitCheck(Item, g);
+               
+                Item.draw(g);
+            });
+
 
             //Player Handler
             player.draw(g);
 
 
             // TODO fikse boss skipet
-            g.DrawImage(capt,20,20,deskW/4, deskH/8);
+            //g.DrawImage(capt,20,20,deskW/4, deskH/8);
 
 
             // TODO Algoritme for skiprunder
             // TODO Algoritmer for bossfight
             // TODO Skyting fra skip
             // TODO Legge til lyd og musikk
-            // TODO implementer meny, kontrollerinfo og credits
+            
             // TODO score system
             // TODO whale respawn random
-            // TODO faste objekter
+            
             // TODO spawning av skip og level design
         }
 
