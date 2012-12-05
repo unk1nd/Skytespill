@@ -17,11 +17,14 @@ namespace Skytespill
         private int deskH;
         private int counter;
         private int level;
-        private Image capt = global::Skytespill.Properties.Resources.captain_10_v2;
+        Boolean bossFight = false;
+        
         private List<Shot> bullet_list = new List<Shot>();
         private List<boat> boat_list = new List<boat>();
         private List<whale> whale_list = new List<whale>();
         private List<isles> isles_list = new List<isles>();
+        private List<BigIsles> bigisles_list = new List<BigIsles>();
+        private List<boss> boss = new List<boss>();
         System.Windows.Forms.Timer levelTimer = new System.Windows.Forms.Timer();
         
 
@@ -84,7 +87,7 @@ namespace Skytespill
             isles_list.Add(new isles(deskW, deskH, deskW / 3, deskH / 3));
             isles_list.Add(new isles(deskW, deskH, deskW / 6, deskH / 6));
             isles_list.Add(new isles(deskW, deskH, 800 + (deskW / 2), 300 + (deskH / 2)));
-            isles_list.Add(new isles(deskW, deskH, (deskW / 2) - 800, 300 + (deskH / 2)));
+            bigisles_list.Add(new BigIsles(deskW, deskH, (deskW / 2) - 800, 300 + (deskH / 2)));
             isles_list.Add(new isles(deskW, deskH, 500 + (deskW / 2), deskH / 3));
         }
 
@@ -185,8 +188,6 @@ namespace Skytespill
             //BOATBOATBOAT
 
 
-
-
             switch (this.level) 
             { 
                 case 10:
@@ -222,16 +223,16 @@ namespace Skytespill
                 case 0:
                 levelTimer.Stop();
                     //Release the hounds!
+                if (!bossFight)
+                {
+                    boat_list.Clear();
+                    boss.Add(new boss(deskW, deskH));
+                    bossFight = true;
+                }
+
                 break;
             }
             
-
-       
-
-
-            
-
-
 
             // Boathandler
             boat_list.ForEach(Item =>
@@ -263,6 +264,21 @@ namespace Skytespill
                 Item.draw(g);
             });
 
+            bigisles_list.ForEach(Item =>
+            {
+                //hitCheck(Item, g);
+
+                Item.draw(g);
+            });
+
+            //boss handler
+            boss.ForEach(Item =>
+            {
+                //hitCheck(Item, g);
+                Item.moveBoat();
+                Item.draw(g);
+                
+            });
 
             //Player Handler
             player.draw(g);
@@ -270,16 +286,15 @@ namespace Skytespill
 
 
             // TODO fikse boss skipet
-            //g.DrawImage(capt,20,20,deskW/4, deskH/8);
+            //
 
 
-            // TODO Algoritme for skiprunder
+            
             // TODO Algoritmer for bossfight
-            // TODO Skyting fra skip
-            // TODO Legge til lyd og musikk
+            
             
             // TODO score system
-            // TODO whale respawn random
+           
             
             // TODO spawning av skip og level design
         }
@@ -323,7 +338,14 @@ namespace Skytespill
                 this.Invalidate();
             }
 
-            
+            if (e.KeyCode == Keys.O)
+            {
+
+                ThreadStart ts = new ThreadStart(addboss);
+                Thread bossThread = new Thread(ts);
+                bossThread.Start();
+                this.Invalidate();
+            }
 
             if (e.KeyCode == Keys.N)
             {
@@ -364,9 +386,12 @@ namespace Skytespill
 
         public void addboat()
         { 
-           
-            
             boat_list.Add(new boat(deskW, deskH));
+        }
+
+        public void addboss()
+        {
+            boss.Add(new boss(deskW, deskH));
         }
 
         public void addwhale()

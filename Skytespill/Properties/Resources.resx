@@ -286,4 +286,16 @@
   <data name="Bruno_Belotti___Benvenuta_Estate_Mazurka_Short_Loop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Bruno_Belotti_-_Benvenuta_Estate_Mazurka_Short_Loop.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="canonball_ship" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\canonball_ship_.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_boss_left" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_boss_left.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_boss_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_boss_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ship_boss_up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ship_boss_up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

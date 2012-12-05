@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="BigIsles.cs" />
     <Compile Include="boat.cs" />
+    <Compile Include="boss.cs" />
     <Compile Include="ControlsPanel.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -74,6 +75,7 @@
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="shipShot.cs" />
     <Compile Include="Shot.cs" />
     <Compile Include="whale.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -265,13 +267,25 @@
     <None Include="Resources\controls.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\credits.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Evan_LE_NY_-_Credits.wav" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Bruno_Belotti_-_Benvenuta_Estate_Mazurka_Short_Loop.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\credits.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\canonball_ship_.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_boss_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_boss_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ship_boss_up.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

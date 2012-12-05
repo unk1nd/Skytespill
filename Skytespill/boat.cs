@@ -31,6 +31,12 @@ namespace Skytespill
         private int screenwidth;
         private int screenheight;
         private int screenMargin = 10;
+        private int shotPointX,shotPointY;
+
+        private List<shipShot> shipbullet_list = new List<shipShot>();
+
+        private Random randomX = new Random();
+        private Random randomY = new Random();
 
         public boat(int screenwidth, int screenheight )
         {
@@ -38,6 +44,8 @@ namespace Skytespill
             this.y = screenMargin;
             this.screenheight = screenheight;
             this.screenwidth = screenwidth;
+            this.shotPointX = randomX.Next(500, screenwidth - 500);
+            this.shotPointY = randomY.Next(200, screenheight - 200);
         }
 
         public Rectangle BoatArea
@@ -88,8 +96,11 @@ namespace Skytespill
         private void topMovement()
         {
             //move
-            
-
+            //this.shotPoint = randomX.Next(200, screenwidth - 200);
+            if (x == this.shotPointX) 
+            {
+                shot(1);
+            }
 
             switch(this.life)
             {
@@ -116,7 +127,10 @@ namespace Skytespill
         private void rightMovement()
         {
             //move
-        
+            if (y == this.shotPointY)
+            {
+                shot(2);
+            }
 
 
             switch (this.life)
@@ -143,7 +157,10 @@ namespace Skytespill
         private void BottomMovement()
         {
             //move
-           
+            if (x == this.shotPointX)
+            {
+                shot(3);
+            }
 
             switch (this.life)
             {
@@ -169,7 +186,10 @@ namespace Skytespill
         private void LeftMovement()
         {
             //move
-            
+            if (y == this.shotPointY)
+            {
+                shot(4);
+            }
 
             switch (this.life)
             {
@@ -197,6 +217,19 @@ namespace Skytespill
         public void draw(System.Drawing.Graphics g)
         {
             g.DrawImage(current, x, y);
+
+            shipbullet_list.ForEach(Item =>
+            {
+                //WhaleHit(Item, g);
+                Item.moveShot();
+                Item.draw(g);
+            });
+            
+        }
+
+        public void shot(int move)
+        {
+            shipbullet_list.Add(new shipShot(x, y, screenwidth, screenheight,move));
         }
     }
 }
