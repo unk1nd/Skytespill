@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 using System.Threading;
+using System.Media;
 
 namespace Skytespill
 {
@@ -58,6 +59,7 @@ namespace Skytespill
             levelTimer.Interval = 5000;
             levelTimer.Start();
             InitializeComponent();
+            
             
         }
 
@@ -228,6 +230,8 @@ namespace Skytespill
                     boat_list.Clear();
                     boss.Add(new boss(deskW, deskH));
                     bossFight = true;
+                    SoundInterface test = new SoundInterface();
+                    
                 }
 
                 break;

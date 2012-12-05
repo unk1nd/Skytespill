@@ -11,8 +11,6 @@ namespace Skytespill
     {
         private float x, y;
 
-        private SoundPlayer bossmusic = new SoundPlayer(global::Skytespill.Properties.Resources.big_boss_2_0);
-
 
         // liv bilder
         private Image capt = global::Skytespill.Properties.Resources.captain_10_v2;
@@ -37,7 +35,7 @@ namespace Skytespill
         public boss(int screenwidth, int screenheight)
         {
 
-            bossmusic.PlayLooping();
+            
             this.x = screenwidth / 2;
             this.y = screenheight;
             this.screenheight = screenheight;

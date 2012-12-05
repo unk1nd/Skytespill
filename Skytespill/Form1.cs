@@ -24,6 +24,7 @@ namespace Skytespill
         SoundPlayer menuTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Bolt___Vodka_Polka);
         SoundPlayer creditsTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Evan_LE_NY___Credits);
         SoundPlayer mainGameTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Bruno_Belotti___Benvenuta_Estate_Mazurka_Short_Loop);
+        SoundPlayer bossmusic = new SoundPlayer(global::Skytespill.Properties.Resources.big_boss_2_0);
 
         public Form1()
         {
@@ -35,6 +36,10 @@ namespace Skytespill
             InitializeComponent();
         }
 
+        public virtual void playBoss()
+        {
+            bossmusic.PlayLooping();
+        }
         
 
         private void FormKeyDownEvent(object sender, KeyEventArgs e)
