@@ -26,6 +26,7 @@ namespace Skytespill
         private List<isles> isles_list = new List<isles>();
         private List<BigIsles> bigisles_list = new List<BigIsles>();
         private List<boss> sjef = new List<boss>();
+        private SoundInterface music = new SoundInterface();
         System.Windows.Forms.Timer levelTimer = new System.Windows.Forms.Timer();
         ThreadStart ts;
         Thread whaleThread, boatThread, obstacleThread;
@@ -76,26 +77,17 @@ namespace Skytespill
         protected override void OnPaint(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
+            
+            //Så lenge spiller IKKE er over.
             if (!this.gameOver)
             {
-
-                //Static images
-                island.draw(g);
-
-                //WhaleHandler
-                whale_list.ForEach(Item =>
-                {
-                    Item.moveWhale();
-                    Item.draw(g);
-                });
-
-                //Sjekker alle vennlige kuler sine skudd
-
-                playerHits(bullet_list, g);
+                island.draw(g);                 //Legger inn øyen til spilleren
 
 
+                
+                playerHits(bullet_list, g);     //Sjekker om spilleren sine skudd har truffet noe
 
-                //Sjekker alle fiendlige båter sine skudd (Utenom Boss)
+                //Sjekker om båtene har truffet noe.
                 boat_list.ForEach(Item =>
                 {
                     List<shipShot> tempList = Item.Shipbullet_list;
@@ -108,7 +100,7 @@ namespace Skytespill
                     });
                 });
 
-                //Sjekker boss sine skudd
+                //Sjekker om bossen har truffet noe
                 sjef.ForEach(Item =>
                 {
                     List<shipShot> tempList = Item.shipbullet_list;
@@ -120,62 +112,23 @@ namespace Skytespill
                             tempList.Remove(Item2);
                     });
                 });
-
-
-                switch (this.level)
+                
+                
+                //Oppdatering og tegning av hval
+                whale_list.ForEach(Item =>
                 {
-                    case 10:
-                        levelTimer.Interval = 5000;
-                        break;
-                    case 9:
-                        levelTimer.Interval = 4000;
-                        break;
-                    case 8:
-                        levelTimer.Interval = 3000;
-                        break;
-                    case 7:
-                        levelTimer.Interval = 2000;
-                        break;
-                    case 6:
-                        levelTimer.Interval = 1000;
-                        break;
-                    case 5:
-                        levelTimer.Interval = 900;
-                        break;
-                    case 4:
-                        levelTimer.Interval = 800;
-                        break;
-                    case 3:
-                        levelTimer.Interval = 700;
-                        break;
-                    case 2:
-                        levelTimer.Interval = 600;
-                        break;
-                    case 1:
-                        levelTimer.Interval = 500;
-                        break;
-                    case 0:
-                        levelTimer.Stop();
-                        if (!bossFight)
-                        {
-                            boat_list.Clear();
-                            sjef.Add(new boss(deskW, deskH));
-                            bossFight = true;
-                            SoundInterface test = new SoundInterface();
+                    Item.moveWhale();
+                    Item.draw(g);
+                });
 
-                        }
-                        break;
-                }
-
-
-                // Boathandler
+                //Oppdatering og tekning av Båter
                 boat_list.ForEach(Item =>
                 {
                     Item.moveBoat();
                     Item.draw(g);
                 });
 
-                //Bullethandler
+                //Oppdatering og tegning av Spilleren sine kuler
                 bullet_list.ForEach(Item =>
                 {
                     if (Item.Active == true)
@@ -185,51 +138,112 @@ namespace Skytespill
                     Item.draw(g);
                 });
 
-                //Isles Handler
+                //Tegning av Små øyer
                 isles_list.ForEach(Item =>
                 {
-                    //hitCheck(Item, g);
-
                     Item.draw(g);
                 });
 
+                //Tegning av Store øyer
                 bigisles_list.ForEach(Item =>
                 {
                     Item.draw(g);
                 });
 
-                //boss handler
+                //Oppdatering og tegning av Boss
                 sjef.ForEach(Item =>
                 {
                     Item.moveBoat();
                     Item.draw(g);
                 });
 
-                //Player Handler
+                //Tegning av Player (Oppdatering skjer i keyhandlers)
                 player.draw(g);
-                g.DrawString("Score: " + this.score + " " + bullet_list.Count, new Font("Tahoma", 20), new SolidBrush(Color.Black), new Point(0, deskH - 50));
 
+                //Legger til Score
+                g.DrawString("Score: " + this.score, new Font("Tahoma", 20), new SolidBrush(Color.Black), new Point(0, deskH - 50));
 
+                //Siden vi vil være snille mot spillerne, og ikke la dem få minuspoeng i score.
+                if (this.score < 0)
+                    this.score = 0;
             }
-            else
+            else //Når spillet er over
             {
-                if (!win)
+                if (!win) //OM man ikke vant, så får man bestkjed om at man tapte
                     g.DrawString("DU TAPTE...", new Font("Tahoma", 50), new SolidBrush(Color.Black), new Point(200, 200));
-                else
+                else //Ellers så får man en gratulasjon.
                     g.DrawString("DU VANT!", new Font("Tahoma", 50), new SolidBrush(Color.Black), new Point(200, 200));
 
-
+                //Viser Score, og veildening på hvordan man kommer seg tilbake til menyen.
                 g.DrawString("Din Score: " + this.score, new Font("Tahoma", 30), new SolidBrush(Color.Black), new Point(200, 300));
                 g.DrawString("Trykk Esc eller Escape for å komme tilbake til menyen", new Font("Tahoma", 25), new SolidBrush(Color.Black), new Point(200, 350));
-            }
-
-
-
-
-            if (this.score < 0)
-                this.score = 0;
+            }            
         }
 
+        //Håndterer Threads for båtene
+        private void boatAddHandler(object sender, EventArgs e)
+        {
+            ts = new ThreadStart(addboat);
+            boatThread = new Thread(ts);
+            boatThread.Start();
+
+            switch (this.level)
+            {
+                case 10:
+                    levelTimer.Interval = 5000;
+                    break;
+                case 9:
+                    levelTimer.Interval = 4000;
+                    break;
+                case 8:
+                    levelTimer.Interval = 3000;
+                    break;
+                case 7:
+                    levelTimer.Interval = 2000;
+                    break;
+                case 6:
+                    levelTimer.Interval = 1000;
+                    break;
+                case 5:
+                    levelTimer.Interval = 900;
+                    break;
+                case 4:
+                    levelTimer.Interval = 800;
+                    break;
+                case 3:
+                    levelTimer.Interval = 700;
+                    break;
+                case 2:
+                    levelTimer.Interval = 600;
+                    break;
+                case 1:
+                    levelTimer.Interval = 500;
+                    break;
+                case 0:
+                    levelTimer.Stop();
+                    if (!bossFight)
+                    {
+                        boat_list.Clear();
+                        sjef.Add(new boss(deskW, deskH));
+                        bossFight = true;
+                        music.PlayBossMusic();
+
+                    }
+                    break;
+            }
+        }
+
+        //Metode for lett å legge inn hindringer.
+        private void AddObstacles()
+        {
+            isles_list.Add(new isles(deskW, deskH, deskW / 3, deskH / 3));
+            isles_list.Add(new isles(deskW, deskH, deskW / 6, deskH / 6));
+            isles_list.Add(new isles(deskW, deskH, 800 + (deskW / 2), 300 + (deskH / 2)));
+            bigisles_list.Add(new BigIsles(deskW, deskH, (deskW / 2) - 800, 300 + (deskH / 2)));
+            isles_list.Add(new isles(deskW, deskH, 500 + (deskW / 2), deskH / 3));
+        }
+        
+        // Tegner eksplosjonen
         public void DrawExplosion(float x, float y, Graphics g)
         {
             Image current = global::Skytespill.Properties.Resources.explosion_1;
@@ -240,25 +254,10 @@ namespace Skytespill
             g.DrawImage(explo2, x, y);   
         }
        
-        private void AddObstacles() 
-        {
-            isles_list.Add(new isles(deskW, deskH, deskW / 3, deskH / 3));
-            isles_list.Add(new isles(deskW, deskH, deskW / 6, deskH / 6));
-            isles_list.Add(new isles(deskW, deskH, 800 + (deskW / 2), 300 + (deskH / 2)));
-            bigisles_list.Add(new BigIsles(deskW, deskH, (deskW / 2) - 800, 300 + (deskH / 2)));
-            isles_list.Add(new isles(deskW, deskH, 500 + (deskW / 2), deskH / 3));
-        }
-
-        private void boatAddHandler(object sender, EventArgs e)
-        {
-            ts = new ThreadStart(addboat);
-            boatThread = new Thread(ts);
-            boatThread.Start();
-        }
-
+        //Metode for å sjekke om fiendens kanonkuler har truffet noe.
         private void shipHits(List<shipShot> shipShotList)
         {
-
+            //Sjekker om noen kanonkuler skal sprette tilbake
             for (int i = 0; i < shipShotList.Count; i++)
             {
                 whale_list.ForEach(Item =>
@@ -270,10 +269,10 @@ namespace Skytespill
                     }
                 });
             }
-            
+            //Sjekker om noen kanonkuler skal fjernes/destrueres
             for (int i = 0; i < shipShotList.Count; i++)
             {
-                
+                    //Kollisjonsdetektor for spilleren. Her mister spilleren liv om han blir truffet.
                     if (player.PlayerArea.IntersectsWith(shipShotList[i].BulletArea))
                     {
                         shipShotList[i].Active = false;
@@ -285,7 +284,7 @@ namespace Skytespill
                         }
                     }
                
-                
+                //Kuler vs  små øyer
                 isles_list.ForEach(Item =>
                 {
                     if (Item.islesArea.IntersectsWith(shipShotList[i].BulletArea))
@@ -294,14 +293,7 @@ namespace Skytespill
                     }
                 });
 
-                isles_list.ForEach(Item =>
-                {
-                    if (Item.islesArea.IntersectsWith(shipShotList[i].BulletArea))
-                    {
-                        shipShotList[i].Active = false;
-                    }
-                });
-
+                //Kuler vs store øyer
                 bigisles_list.ForEach(Item =>
                 {
                     if (Item.bigislesArea.IntersectsWith(shipShotList[i].BulletArea))
@@ -310,6 +302,7 @@ namespace Skytespill
                     }
                 });
 
+                //Kuler vs spillers kuler
                 bullet_list.ForEach(Item =>
                 {
                     if (Item.BulletArea.IntersectsWith(shipShotList[i].BulletArea))
@@ -319,14 +312,14 @@ namespace Skytespill
                     }
                 });
 
-
-
             }
         }
 
+        //Metode for å sjekke om Spiller sine kuler har truffet noe
         private void playerHits(List<Shot> bulletList, Graphics g)
         {
 
+            //Sjekker etter potensielle unødvendige kuler som ikke er innenfor spillebrettet
             bulletList.ForEach(Item =>
             {
                 //Deaktiverer seg selv hvis den ser at den er utenfor banen
@@ -336,14 +329,11 @@ namespace Skytespill
                     this.score--;
                 }
                 
-                
                 if (!Item.Active)
                     bulletList.Remove(Item);
-
-
             });
 
-
+            //Sjekker først etter om kulene skal bounce.
             for (int i = 0; i < bulletList.Count; i++)
             {
                 whale_list.ForEach(Item =>
@@ -356,8 +346,10 @@ namespace Skytespill
                 });
             }
 
+            //Sjekker om kulene skal destrueres
             for (int i = 0; i < bulletList.Count; i++)
             {
+                //Kuler vs Små øyer
                 isles_list.ForEach(Item =>
                 {
                     if (Item.islesArea.IntersectsWith(bulletList[i].BulletArea))
@@ -366,6 +358,7 @@ namespace Skytespill
                     }
                 });
 
+                //Kuler vs Store øyer
                 bigisles_list.ForEach(Item =>
                 {
                     if (Item.bigislesArea.IntersectsWith(bulletList[i].BulletArea))
@@ -374,6 +367,7 @@ namespace Skytespill
                     }
                 });
 
+                //Kuler vs båter
                 boat_list.ForEach(Item =>
                 {
                     if (Item.BoatArea.IntersectsWith(bullet_list[i].BulletArea))
@@ -413,6 +407,7 @@ namespace Skytespill
                     }
                 });
 
+                // Kuler VS Boss-skiper
                 sjef.ForEach(Item =>
                 {
                     if (Item.BossArea.IntersectsWith(bullet_list[i].BulletArea))
@@ -432,21 +427,16 @@ namespace Skytespill
                     }
                 });
 
-
-
             }
         }
 
-        
-
-      
-
-
+        //Keydowneventet
         public void keydown(object sender, KeyEventArgs e)
         {
-            //Til bruk for å teste diverse objekter
-            KeyDownDEBUG(this, e);
+            //Til bruk for å teste diverse objekter (Se metode nederst)
+            //KeyDownDEBUG(this, e);
 
+            //Roterer spiller til venstre
             if (e.KeyCode == Keys.D)
             {
                 player.Rotation += 5;
@@ -455,6 +445,7 @@ namespace Skytespill
                     player.Rotation = 0;
             }
 
+            //Roterer spiller til høyre
             if (e.KeyCode == Keys.A)
             {
                 player.Rotation -= 5;
@@ -463,6 +454,7 @@ namespace Skytespill
                     player.Rotation = 360;
             }
             
+            //Skyter kanonkule
             if (e.KeyCode == Keys.Space)
             {
                 if (bullet_list.Count < 5)
@@ -474,27 +466,32 @@ namespace Skytespill
             }
         }
 
+        //Metode brukt av threadhandler for å legge til kuler
         public void addbullet()
         {
             bullet_list.Add(new Shot(player.X, player.Y, player.Rotation, deskW , deskH));
         }
 
+        //Metode brukt av threadhandler for å legge til båter
         public void addboat()
         { 
             boat_list.Add(new boat(deskW, deskH));
         }
 
+        //Metode brukt av threadhandler for å legge til sjefsbåten
         public void addboss()
         {
             sjef.Add(new boss(deskW, deskH));
         }
 
+        //Metode brukt av threadhandler for å legge til hval
         public void addwhale()
         {
             whale_list.Add(new whale(deskW, deskH));
         }
 
-        
+        /* Debugkode. Kan avkommenteres sammen med metoden i keydown 
+         * handleren for å få tilgang til å legge ut hindere og båter.
         public void KeyDownDEBUG(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.B)
@@ -520,7 +517,7 @@ namespace Skytespill
             }
     
         }
+        */
          
-  
     }
 }

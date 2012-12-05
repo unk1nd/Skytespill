@@ -6,6 +6,10 @@ using System.Text;
 
 namespace Skytespill
 {
+    /*
+     *      Objektklasse for å håndtere Spilleren
+     * 
+     */
     class Player
     {
         private float x, y, rotation;

@@ -6,6 +6,10 @@ using System.Drawing;
 
 namespace Skytespill
 {
+    /*
+     *      Objektklasse for å håndtere kanonkulene til spilleren
+     * 
+     */
     class Shot
     {
         private float x, y;
@@ -82,7 +86,6 @@ namespace Skytespill
         {
             if (active)
             {
-                //g.FillEllipse(Brushes.Black, x - 7.5f, y - 7.5f, 15f, 15f);
                 g.DrawImage(canonball, x - 7.5f, y - 7.5f, 15f, 15f);
             }
         }

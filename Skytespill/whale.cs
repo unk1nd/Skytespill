@@ -6,6 +6,10 @@ using System.Drawing;
 
 namespace Skytespill
 {
+    /*
+     *     Objektsklasse for håndtering av hvaler.
+     * 
+     */
     class whale
     {
         private float x, y;

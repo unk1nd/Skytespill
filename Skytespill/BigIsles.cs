@@ -6,6 +6,10 @@ using System.Drawing;
 
 namespace Skytespill
 {
+    /*
+     *      Objektklasse for å håndtere sprites av Store øyner 
+     * 
+     */
     class BigIsles
     {
         private float x, y;

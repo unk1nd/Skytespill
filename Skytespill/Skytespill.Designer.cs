@@ -1,6 +1,6 @@
 ﻿namespace Skytespill
 {
-    partial class Form1
+    partial class Skytespill
     {
         /// <summary>
         /// Required designer variable.

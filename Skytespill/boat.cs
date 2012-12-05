@@ -6,6 +6,10 @@ using System.Drawing;
 
 namespace Skytespill
 {
+    /*
+     *      Objektklasse for å håndtere sprites og manørering av Båter
+     * 
+     */
     class boat : RectangleConverter
     {
         private float x, y;
@@ -67,19 +71,6 @@ namespace Skytespill
 
         public void moveBoat()
         {
-            /*
-            if (x <= screenwidth-(ship_right.Width *2 ) ) 
-                { 
-                    x = x + 5f; 
-                    current = ship_right; 
-                }
-            
-            else if (x >= screenwidth - (ship_right.Width * 2 -1) ) 
-                { 
-                    y = y + 5f; 
-                    current = ship_down; 
-                }
-            */
             switch(currentMovement)
             {
                 case Movement.Top:
@@ -101,8 +92,6 @@ namespace Skytespill
         private Movement currentMovement = Movement.Top;
         private void topMovement()
         {
-            //move
-            //this.shotPoint = randomX.Next(200, screenwidth - 200);
             if (x == this.shotPointX) 
             {
                 shot(1);
@@ -132,7 +121,6 @@ namespace Skytespill
 
         private void rightMovement()
         {
-            //move
             if (y == this.shotPointY)
             {
                 shot(2);
@@ -162,7 +150,6 @@ namespace Skytespill
 
         private void BottomMovement()
         {
-            //move
             if (x == this.shotPointX)
             {
                 shot(3);
@@ -191,7 +178,6 @@ namespace Skytespill
 
         private void LeftMovement()
         {
-            //move
             if (y == this.shotPointY)
             {
                 shot(4);
@@ -226,7 +212,6 @@ namespace Skytespill
 
             shipbullet_list.ForEach(Item =>
             {
-                //WhaleHit(Item, g);
                 Item.moveShot();
                 Item.draw(g);
             });

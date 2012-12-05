@@ -7,6 +7,10 @@ using System.Media;
 
 namespace Skytespill
 {
+    /*
+     *      Objektklasse for å håndtere sprites Sjefen
+     * 
+     */
     class boss : RectangleConverter
     {
         private float x, y;
@@ -205,7 +209,6 @@ namespace Skytespill
 
             shipbullet_list.ForEach(Item =>
             {
-                //WhaleHit(Item, g);
                 Item.moveShot();
                 Item.draw(g);
             });

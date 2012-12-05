@@ -9,6 +9,10 @@ using System.Windows.Forms;
 
 namespace Skytespill
 {
+    /*
+     *      Panel for håndtering av Menyen.
+     * 
+     */
     class MenuPanel : Panel
     {
         Form parent;

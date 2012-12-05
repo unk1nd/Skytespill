@@ -6,6 +6,10 @@ using System.Drawing;
 
 namespace Skytespill
 {
+    /*
+     *      Objektklasse for å håndtere sprites av øyen spilleren står på. (Det er denne som mister liv)
+     * 
+     */
     class island
     {
         private float x, y;

@@ -7,6 +7,10 @@ using System.Drawing;
 
 namespace Skytespill
 {
+    /*
+     *      Panel for å vise hvordan kontrollerne fungerer.
+     * 
+     */
     class ControlsPanel : Panel
     {
         private Form parent;

@@ -6,6 +6,10 @@ using System.Drawing;
 
 namespace Skytespill
 {
+    /*
+     *      Objektklasse for å håndtere Kanonkulene til NPCskipene.
+     * 
+     */
     class shipShot
     {
         private float x, y;

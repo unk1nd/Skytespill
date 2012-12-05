@@ -7,6 +7,10 @@ using System.Drawing;
 
 namespace Skytespill
 {
+    /*
+     *      Panel for å vise rullende Credits.
+     * 
+     */
     class CreditsPanel : Panel
     {
         private Form parent;

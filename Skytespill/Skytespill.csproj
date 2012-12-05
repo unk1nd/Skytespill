@@ -55,17 +55,14 @@
     <Compile Include="CreditsPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="EndGamePanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="GamePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Skytespill.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Skytespill.Designer.cs">
+      <DependentUpon>Skytespill.cs</DependentUpon>
     </Compile>
     <Compile Include="island.cs" />
     <Compile Include="isles.cs" />
@@ -73,16 +70,13 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Player.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="shipShot.cs" />
     <Compile Include="Shot.cs" />
-    <Compile Include="SoundInterface.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="SoundInterface.cs" />
     <Compile Include="whale.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Skytespill.resx">
+      <DependentUpon>Skytespill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

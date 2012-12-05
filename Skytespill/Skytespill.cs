@@ -11,7 +11,12 @@ using System.Windows.Forms;
 
 namespace Skytespill
 {
-    public partial class Form1 : Form
+    /*  HovedVinduet i spillet.
+     * 
+     * Her foregår alt av switching mellom panels, og keyevents.
+     * 
+     */
+    public partial class Skytespill : Form
     {
         MenuPanel menuPanel;
         GamePanel gamePanel;
@@ -20,31 +25,28 @@ namespace Skytespill
         public int DeskH = Screen.PrimaryScreen.Bounds.Height;
         public int DeskW = Screen.PrimaryScreen.Bounds.Width;
         System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
+        private SoundInterface music = new SoundInterface();
 
-        SoundPlayer menuTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Bolt___Vodka_Polka);
-        SoundPlayer creditsTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Evan_LE_NY___Credits);
-        SoundPlayer mainGameTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Bruno_Belotti___Benvenuta_Estate_Mazurka_Short_Loop);
-        SoundPlayer bossmusic = new SoundPlayer(global::Skytespill.Properties.Resources.big_boss_2_0);
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Skytespill());
+        }
 
-        public Form1()
+        public Skytespill()
         {
             this.menuPanel = new MenuPanel(this);
             this.menuPanel.Size = new Size(DeskW, DeskH);
-            menuTheme.PlayLooping();
+            music.PlayMenuMusic();
             
             this.Controls.Add(menuPanel);
             InitializeComponent();
-        }
-
-        public virtual void playBoss()
-        {
-            bossmusic.PlayLooping();
-        }
-        
+        }        
 
         private void FormKeyDownEvent(object sender, KeyEventArgs e)
         {
-
+            //Switcher for å servere keyevents til de forskjellige panelene.
  
             if(menuPanel != null)
             {
@@ -62,7 +64,7 @@ namespace Skytespill
                     gamePanel = null;
                     Controls.Add(menuPanel);
                     menuPanel.Show();
-                    menuTheme.PlayLooping();
+                    music.PlayMenuMusic();
                 }
             }
             else if (controlPanel != null) 
@@ -75,7 +77,6 @@ namespace Skytespill
                     controlPanel = null;
                     Controls.Add(menuPanel);
                     menuPanel.Show();
-                    menuTheme.PlayLooping();
                 }
             }
             else if (creditPanel != null)
@@ -88,7 +89,7 @@ namespace Skytespill
                     creditPanel = null;
                     Controls.Add(menuPanel);
                     menuPanel.Show();
-                    menuTheme.PlayLooping();
+                    music.PlayMenuMusic();
                 }
             }
         }
@@ -131,7 +132,7 @@ namespace Skytespill
                     t.Tick += new EventHandler(gameTicker);
                     t.Interval = 10;
                     t.Start();
-                    mainGameTheme.PlayLooping();
+                    music.PlayMainGameMusic();
 
                 }
 
@@ -151,7 +152,7 @@ namespace Skytespill
                     menuPanel = null;
                     Controls.Add(creditPanel);
                     creditPanel.Show();
-                    creditsTheme.PlayLooping();
+                    music.PlayCreditsMusic();
                 }
 
                 else if (menuPanel.selection == 3)
