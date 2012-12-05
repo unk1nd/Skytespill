@@ -58,6 +58,20 @@ namespace Skytespill
                     controlPanel = null;
                     Controls.Add(menuPanel);
                     menuPanel.Show();
+                    menuTheme.PlayLooping();
+                }
+            }
+            else if (creditPanel != null)
+            {
+
+                if (e.KeyCode == Keys.Escape)
+                {
+                    menuPanel = new MenuPanel(this);
+                    creditPanel.Hide();
+                    creditPanel = null;
+                    Controls.Add(menuPanel);
+                    menuPanel.Show();
+                    menuTheme.PlayLooping();
                 }
             }
         }

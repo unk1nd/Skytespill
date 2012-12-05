@@ -11,16 +11,6 @@ namespace Skytespill
         private float x, y;
         private float screenheight, screenwidth;
 
-        /*  
-         * 
-         *  Legger til whales
-         *  
-         * 
-            
-        */
-
-
-
         private Image isles1 = global::Skytespill.Properties.Resources.mountain_1;
 
         public Rectangle islesArea

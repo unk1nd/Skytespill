@@ -10,19 +10,18 @@ namespace Skytespill
     class CreditsPanel : Panel
     {
         private Form parent;
-        private int DeskW, DeskH;
-
-        CreditContent cred = new CreditContent();
+        private Image castle1 = global::Skytespill.Properties.Resources.credits;
+        private float x, y;
 
         public CreditsPanel(Form _parent)
-        {
-            
+        { 
             parent = _parent;
-            DeskW = parent.Width;
-            DeskH = parent.Height;
+            this.Width = parent.Width;
+            this.Height = parent.Height;
 
-            this.Width = DeskW;
-            this.Height = DeskH;
+            this.y = Height;
+            this.x = 0;
+
             this.BackColor = System.Drawing.Color.Black;
            
             this.SetStyle(ControlStyles.DoubleBuffer |
@@ -32,26 +31,14 @@ namespace Skytespill
             Cursor.Hide();
         }
 
-        private void credrole(PaintEventArgs e)
-        {
-            Graphics g = e.Graphics;
-            this.TegneGrid(g);
-
-            cred.Move();
-            cred.draw(g);
-            Invalidate();
-
-        }
-
-        private void TegneGrid(Graphics g)
-        {
-
-        }
-
         protected override void OnPaint(PaintEventArgs e)
         {
-            credrole(e);
-            base.OnPaint(e);
+            Graphics g = e.Graphics;
+
+            g.DrawImage(castle1, x, y, this.Width, this.Height * 3);
+            this.y -= 0.9f; 
+            
+            Invalidate();
         }
     }
 }
