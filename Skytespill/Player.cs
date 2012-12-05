@@ -20,7 +20,7 @@ namespace Skytespill
 
         public Rectangle PlayerArea
         {
-            get { return new Rectangle((int)this.x, (int)this.y, (int)100, (int)100); }
+            get { return new Rectangle((int)this.x - canon.Width / 2 , (int)this.y - canon.Height /2, (int)canon.Width, (int)canon.Height); }
         }
 
         public void draw(System.Drawing.Graphics g) {

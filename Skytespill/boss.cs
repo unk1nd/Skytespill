@@ -111,7 +111,7 @@ namespace Skytespill
             }
             x = x + 5f;
 
-            if (x >= screenwidth - (400 + current.Width))
+            if (x >= screenwidth - (screenwidth / 4.8))
             {
                 RandomShotSpots();
                 currentMovement = Movement.Left;
@@ -133,7 +133,7 @@ namespace Skytespill
         {
             //move
             y = y - 1f;
-            if (y <= screenheight - (150))
+            if (y <= screenheight - (screenheight / 7.2))
                 currentMovement = Movement.Left;
         }
 
@@ -161,7 +161,7 @@ namespace Skytespill
             }
             x = x - 5f;
 
-            if (x <= 0 + (400))
+            if (x <= 0 + (screenwidth / 4.8))
             {
                 RandomShotSpots();
                 currentMovement = Movement.Right;

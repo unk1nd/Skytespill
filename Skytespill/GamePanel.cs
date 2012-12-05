@@ -445,7 +445,7 @@ namespace Skytespill
         public void keydown(object sender, KeyEventArgs e)
         {
             //Til bruk for å teste diverse objekter
-            //KeyDownDEBUG(this, e);
+            KeyDownDEBUG(this, e);
 
             if (e.KeyCode == Keys.D)
             {
@@ -494,7 +494,7 @@ namespace Skytespill
             whale_list.Add(new whale(deskW, deskH));
         }
 
-        /*
+        
         public void KeyDownDEBUG(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.B)
@@ -520,7 +520,7 @@ namespace Skytespill
             }
     
         }
-         */
+         
   
     }
 }

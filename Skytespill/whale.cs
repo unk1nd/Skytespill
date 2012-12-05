@@ -24,7 +24,7 @@ namespace Skytespill
         public whale(int screenwidth, int screenheight )
         {
             this.x = 500 ;
-            this.y = screenheight - screenheight / 5;
+            this.y = screenheight - screenheight / 4;
             this.screenheight = screenheight;
             this.screenwidth = screenwidth;
         }

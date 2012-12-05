@@ -55,10 +55,24 @@ namespace Skytespill
             if (this.selection == 3)
                 exitState = exitButtonHover;
 
-            g.DrawImage(playState, DeskW / 2, DeskH / 4, playButton.Width, playButton.Height);
-            g.DrawImage(controlsState, (DeskW - controlsButton.Width), (DeskH / 4 + controlsButton.Height - 80), controlsButton.Width, controlsButton.Height);
-            g.DrawImage(creditsState, (DeskW / 2), (DeskH / 4 + creditsButton.Height / 2 * 3 ), creditsButton.Width, creditsButton.Height);
-            g.DrawImage(exitState, (DeskW - exitButton.Width), (DeskH - exitButton.Height), exitButton.Width, exitButton.Height);
+            //scale høyde
+            int playscaleH = (DeskH/8);
+            int controlsscaleH = (DeskH / 8);
+            int creditsscaleH = (DeskH / 8);
+            int exitscaleH = (DeskH / 8);
+
+            //scale lengde
+            int playscaleL = (DeskW / 6);
+            int controlsscaleL = (DeskW / 6);
+            int creditsscaleL = (DeskW / 6);
+            int exitscaleL = (DeskW / 6);
+
+            int spaces = (DeskH / 28);
+
+            g.DrawImage(playState, (DeskW - playscaleL - playscaleL), (DeskH / 4), playscaleL, playscaleH);
+            g.DrawImage(controlsState, (DeskW - controlsscaleL - spaces - controlsscaleL / 2), (DeskH / 4 + playscaleH + spaces), controlsscaleL, controlsscaleH);
+            g.DrawImage(creditsState, (DeskW - controlsscaleL - spaces), (DeskH / 4 + playscaleH + spaces + controlsscaleH + spaces), creditsscaleL, creditsscaleH);
+            g.DrawImage(exitState, (DeskW - exitscaleL - spaces - exitscaleL / 4), (DeskH / 4 + playscaleH + spaces + controlsscaleH + spaces + creditsscaleH + spaces), exitscaleL, exitscaleH);    
         }
 
         public int Selection
