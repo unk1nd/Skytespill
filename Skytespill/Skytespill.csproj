@@ -259,13 +259,16 @@
     <None Include="Resources\exit_btn_normal.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\credits.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\credit_test.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\controls.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\credits.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Evan_LE_NY_-_Credits.wav" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

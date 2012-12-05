@@ -18,8 +18,10 @@ namespace Skytespill
         ControlsPanel controlPanel;
 
         SoundPlayer menuTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Bolt___Vodka_Polka);
+        SoundPlayer creditsTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Evan_LE_NY___Credits);
         public int DeskH = Screen.PrimaryScreen.Bounds.Height;
         public int DeskW = Screen.PrimaryScreen.Bounds.Width;
+        System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
         
         int selection = 0;
         public MenuPanel(Form _parent) 
@@ -33,6 +35,15 @@ namespace Skytespill
             BackgroundImageLayout = ImageLayout.Stretch;
             menuTheme.PlayLooping();
             Cursor.Hide();
+            
+          
+            
+
+        }
+
+        public void gamePanelTimer(object sender, EventArgs e) 
+        {
+            gamePanel.Invalidate();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -70,9 +81,6 @@ namespace Skytespill
             g.DrawImage(creditsState, (DeskW / 2), (DeskH / 4 + creditsButton.Height / 2 * 3 ), creditsButton.Width, creditsButton.Height);
 
             g.DrawImage(exitState, (DeskW - exitButton.Width), (DeskH - exitButton.Height), exitButton.Width, exitButton.Height);
-
-
-
 
         }
         
@@ -125,8 +133,6 @@ namespace Skytespill
                 if (e.KeyCode == Keys.Up)
                 {
 
-
-
                     this.selection--;
                     if (this.selection < 0)
                         this.selection = 0;
@@ -148,6 +154,9 @@ namespace Skytespill
                         gamePanel = new GamePanel(this);
                         this.Controls.Add(gamePanel);
                         menuTheme.Stop();
+                        t.Tick += new EventHandler(gamePanelTimer);
+                        t.Interval = 10;
+                        t.Start();
                     }
 
                     if (this.selection == 3)
@@ -159,6 +168,7 @@ namespace Skytespill
                         creditPanel = new CreditsPanel(this);
                         this.Controls.Add(creditPanel);
                         menuTheme.Stop();
+                        creditsTheme.PlayLooping();
                     }
                     if (this.selection == 1)
                     {

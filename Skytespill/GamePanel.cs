@@ -26,7 +26,7 @@ namespace Skytespill
             parent = _parent;
             deskW = parent.Width;
             deskH = parent.Height;
-            InitializeComponent();
+            
             BackgroundImage = global::Skytespill.Properties.Resources.ocean_tile2;
 
             this.Width = deskW;
@@ -45,14 +45,9 @@ namespace Skytespill
             this.player = new Player(deskW, deskH);
             this.island = new island(deskW, deskH);
             Cursor.Hide();
+            InitializeComponent();
             
         }
-
-        public void t_Tick()
-        {
-            Invalidate();
-        }
-
 
         public void Explosiooon(float x, float y, Graphics g)
         {
@@ -72,7 +67,6 @@ namespace Skytespill
             this.SuspendLayout();
             this.KeyDown += new KeyEventHandler(this.game_Panel_KeyDown);
             this.ResumeLayout(false);
-            Invalidate();
         }
 
         private void hitCheck(boat b, Graphics g)
@@ -111,7 +105,6 @@ namespace Skytespill
         private void DrawGame(PaintEventArgs e)
         {
             Graphics g = e.Graphics;
-            this.TegneGrid(g);
 
             //Static images
             island.draw(g);
@@ -169,11 +162,6 @@ namespace Skytespill
 
         
 
-        private void TegneGrid(Graphics g)
-        {
-
-        }
-
         protected override void OnPaint(PaintEventArgs e)
         {
             DrawGame(e);
@@ -190,7 +178,7 @@ namespace Skytespill
                 {
                     player.Rotation = 0;
                 }
-                Invalidate();
+                this.Invalidate();
             }
             if (e.KeyCode == Keys.A)
             {
@@ -208,7 +196,7 @@ namespace Skytespill
                 ThreadStart ts = new ThreadStart(addboat);
                 Thread boatThread = new Thread(ts);
                 boatThread.Start();
-                Invalidate();
+                this.Invalidate();
             }
 
             
@@ -218,7 +206,7 @@ namespace Skytespill
                 ThreadStart ts = new ThreadStart(addwhale);
                 Thread whaleThread = new Thread(ts);
                     whaleThread.Start();
-                    Invalidate();
+                    this.Invalidate();
             }
 
             if (e.KeyCode == Keys.Space)
@@ -227,7 +215,7 @@ namespace Skytespill
                     ThreadStart ts = new ThreadStart(addbullet);
                     Thread bulletThread = new Thread(ts);
                     bulletThread.Start();
-                    Invalidate();
+                    this.Invalidate();
                 
                 for (int i = 0; i < bullet_list.Count; i++)
                 {
