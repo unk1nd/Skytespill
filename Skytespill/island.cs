@@ -9,18 +9,28 @@ namespace Skytespill
     class island
     {
         private float x, y;
-        
+
         private Image castle1 = global::Skytespill.Properties.Resources.castle_1;
         private Image castle2 = global::Skytespill.Properties.Resources.castle_2;
         private Image castle3 = global::Skytespill.Properties.Resources.castle_3;
         private int life = 3;
 
+        public Rectangle IslandArea
+        {
+            get { return new Rectangle((int)this.x, (int)this.y, (int)castle1.Width, (int)castle1.Height); }
+        }
 
         public island(int screenwidth, int screenheight)
         {
             this.x = (screenwidth / 2);
             this.y = (screenheight / 2);
             
+        }
+
+        public int Life 
+        {
+            get { return this.life; }
+            set { this.life = value; }
         }
 
         public void draw(System.Drawing.Graphics g) {

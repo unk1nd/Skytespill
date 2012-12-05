@@ -53,6 +53,12 @@ namespace Skytespill
             get { return new Rectangle((int)this.x, (int)this.y, current.Width, current.Height ); }
         }
 
+        public List<shipShot> Shipbullet_list
+        {
+            get { return this.shipbullet_list; }
+           
+        }
+
         public int Life
         {
             get { return this.life; }

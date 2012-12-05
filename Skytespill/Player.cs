@@ -18,6 +18,11 @@ namespace Skytespill
             this.rotation = 0;
         }
 
+        public Rectangle PlayerArea
+        {
+            get { return new Rectangle((int)this.x, (int)this.y, (int)100, (int)100); }
+        }
+
         public void draw(System.Drawing.Graphics g) {
           
             g.TranslateTransform(this.x, this.y);

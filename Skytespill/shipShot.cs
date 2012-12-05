@@ -26,6 +26,7 @@ namespace Skytespill
             this.forward = true;
         }
 
+
         public Rectangle BulletArea {
             get { return new Rectangle((int)this.x, (int)this.y, (int)15f, (int)15f); }
         }
@@ -62,6 +63,12 @@ namespace Skytespill
 
                 float dx = 3f;
 
+                if (!this.forward)
+                {
+                    dx = -dx;
+                }
+
+
                 if (move == 1)
                 { y += dx; }
                 if (move == 2)
@@ -70,13 +77,18 @@ namespace Skytespill
                 { y -= dx; }
                 if (move == 4)
                 { x += dx; }
-                
+
+
 
                 //Deaktiverer seg selv hvis den ser at den er utenfor banen
                 if (x < 0 || x > xmax || y < 0 || y > ymax)
                 {
                     this.active = false;
                 }
+            }
+            else {
+                this.x = 9999999999;
+                this.y = 9999999999;
             }
         }
 

@@ -76,6 +76,11 @@ namespace Skytespill
                     this.active = false;
                 }
             }
+            else
+            {
+                this.x = -999999;
+                this.y = -999999;
+            }
         }
 
         public void draw(System.Drawing.Graphics g)
