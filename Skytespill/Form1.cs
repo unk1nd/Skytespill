@@ -52,7 +52,7 @@ namespace Skytespill
             }
             else if (gamePanel != null)
             {
-                gamePanel.game_Panel_KeyDown(this, e);
+                gamePanel.keydown(this, e);
 
                 if (e.KeyCode == Keys.Escape)
                 {

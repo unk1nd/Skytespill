@@ -77,6 +77,16 @@ namespace Skytespill
                 { y -= dx; }
                 if (move == 4)
                 { x += dx; }
+                if (move == 5)
+                { 
+                    y -= dx;
+                    x -= dx;
+                }
+                if (move == 6)
+                {
+                    y -= dx;
+                    x += dx;
+                }
 
 
 

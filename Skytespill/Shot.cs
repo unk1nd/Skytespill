@@ -70,11 +70,6 @@ namespace Skytespill
                 x += dx * (float)Math.Cos(angle);
                 y += dy * (float)Math.Sin(angle);
 
-                //Deaktiverer seg selv hvis den ser at den er utenfor banen
-                if (x < 0 || x > xmax || y < 0 || y > ymax)
-                {
-                    this.active = false;
-                }
             }
             else
             {

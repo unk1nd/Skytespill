@@ -37,7 +37,7 @@ namespace Skytespill
         private int screenMargin = 50;
         private double shotPointX, shotPointY, shotPointZ;
 
-        private List<shipShot> shipbullet_list = new List<shipShot>();
+        public List<shipShot> shipbullet_list = new List<shipShot>();
 
         private Random randomX = new Random();
         private Random randomY = new Random();
@@ -93,15 +93,21 @@ namespace Skytespill
             //move
             if (x == this.shotPointX)
             {
+                shot(5);
                 shot(3);
+                shot(6);
             }
             else if (x == this.shotPointY)
             {
+                shot(5);
                 shot(3);
+                shot(6);
             }
             else if (x == this.shotPointZ)
             {
+                shot(5);
                 shot(3);
+                shot(6);
             }
             x = x + 5f;
 
@@ -137,15 +143,21 @@ namespace Skytespill
             //move
             if (x == this.shotPointX)
             {
+                shot(5);
                 shot(3);
+                shot(6);
             }
             else if (x == this.shotPointY)
             {
+                shot(5);
                 shot(3);
+                shot(6);
             }
             else if (x == this.shotPointZ)
             {
+                shot(5);
                 shot(3);
+                shot(6);
             }
             x = x - 5f;
 
@@ -203,8 +215,7 @@ namespace Skytespill
         public void shot(int move)
         {
             shipbullet_list.Add(new shipShot(x - 50, y, screenwidth, screenheight, move));
-            shipbullet_list.Add(new shipShot(x, y, screenwidth, screenheight, move));
-            shipbullet_list.Add(new shipShot(x + 50, y, screenwidth, screenheight, move));
+
         }
     }
 }
