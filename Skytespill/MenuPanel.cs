@@ -13,17 +13,11 @@ namespace Skytespill
     class MenuPanel : Panel
     {
         Form parent;
-        GamePanel gamePanel;
-        CreditsPanel creditPanel;
-        ControlsPanel controlPanel;
 
-        SoundPlayer menuTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Bolt___Vodka_Polka);
-        SoundPlayer creditsTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Evan_LE_NY___Credits);
         public int DeskH = Screen.PrimaryScreen.Bounds.Height;
         public int DeskW = Screen.PrimaryScreen.Bounds.Width;
-        System.Windows.Forms.Timer t = new System.Windows.Forms.Timer();
         
-        int selection = 0;
+        public int selection = 0;
         public MenuPanel(Form _parent) 
         {
             this.parent = _parent;
@@ -33,17 +27,13 @@ namespace Skytespill
             //this.SetBounds(0, 0, DeskW, DeskH);
             BackgroundImage = global::Skytespill.Properties.Resources.menu_bg;
             BackgroundImageLayout = ImageLayout.Stretch;
-            menuTheme.PlayLooping();
             Cursor.Hide();
-            
-          
-            
-
         }
 
-        public void gamePanelTimer(object sender, EventArgs e) 
+        public int Selection
         {
-            gamePanel.Invalidate();
+            get { return this.selection; }
+            set { this.selection = value; }
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -64,8 +54,8 @@ namespace Skytespill
             Image exitButton = global::Skytespill.Properties.Resources.exit_btn;
             Image exitButtonHover = global::Skytespill.Properties.Resources.exit_btn_hover;
             Image exitState = exitButton;
-            
-            if(this.selection == 0)
+
+            if (this.selection == 0)
                 playState = playButtonHover;
             if (this.selection == 1)
                 controlsState = controlsButtonHover;
@@ -82,105 +72,10 @@ namespace Skytespill
 
             g.DrawImage(exitState, (DeskW - exitButton.Width), (DeskH - exitButton.Height), exitButton.Width, exitButton.Height);
 
+
         }
         
-        public void MenuPanelKeyDownEvent(object sender, KeyEventArgs e)
-        {
-
-            if (gamePanel != null)
-            {
-                gamePanel.game_Panel_KeyDown(this, e);
-                
-                if (e.KeyCode == Keys.Escape)
-                {
-                    this.Controls.Remove(gamePanel);
-                    gamePanel = null;
-                    menuTheme.PlayLooping();
-                }
-            }
-            else if (creditPanel != null)
-            {
-                if (e.KeyCode == Keys.Escape)
-                {
-                    this.Controls.Remove(creditPanel);
-                    creditPanel = null;
-                    menuTheme.PlayLooping();
-                }
-            }
-            else if (controlPanel != null)
-            {
-                if (e.KeyCode == Keys.Escape)
-                {
-                    this.Controls.Remove(controlPanel);
-                    controlPanel = null;
-                    menuTheme.PlayLooping();
-                }
-            }
-
-            else
-            {
-
-                if (e.KeyCode == Keys.Escape)
-                {
-
-                    if (gamePanel != null)
-                    {
-
-                    }
-                }
-
-
-                if (e.KeyCode == Keys.Up)
-                {
-
-                    this.selection--;
-                    if (this.selection < 0)
-                        this.selection = 0;
-                    Invalidate();
-                }
-
-                if (e.KeyCode == Keys.Down)
-                {
-                    this.selection++;
-                    if (this.selection > 3)
-                        this.selection = 3;
-                    Invalidate();
-                }
-
-                if (e.KeyCode == Keys.Enter)
-                {
-                    if (this.selection == 0)
-                    {
-                        gamePanel = new GamePanel(this);
-                        this.Controls.Add(gamePanel);
-                        menuTheme.Stop();
-                        t.Tick += new EventHandler(gamePanelTimer);
-                        t.Interval = 10;
-                        t.Start();
-                    }
-
-                    if (this.selection == 3)
-                    {
-                        Application.Exit();
-                    }
-                    if (this.selection == 2)
-                    {
-                        creditPanel = new CreditsPanel(this);
-                        this.Controls.Add(creditPanel);
-                        menuTheme.Stop();
-                        creditsTheme.PlayLooping();
-                    }
-                    if (this.selection == 1)
-                    {
-                        controlPanel = new ControlsPanel(this);
-                        this.Controls.Add(controlPanel);
-                        menuTheme.Stop();
-                    }
-                }
-
-
-            }
-        }
+       
 
         public void GamePanelKeyDownEvent(object sender, KeyEventArgs e) 
         {

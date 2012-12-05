@@ -9,11 +9,11 @@ namespace Skytespill
 {
     class ControlsPanel : Panel
     {
-        private Panel parent;
+        private Form parent;
         private int DeskW, DeskH;
         private Image ControlImage = global::Skytespill.Properties.Resources.controls;
 
-        public ControlsPanel(Panel _parent)
+        public ControlsPanel(Form _parent)
         {
             
             parent = _parent;

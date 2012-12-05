@@ -9,12 +9,12 @@ namespace Skytespill
 {
     class CreditsPanel : Panel
     {
-        private Panel parent;
+        private Form parent;
         private int DeskW, DeskH;
 
         CreditContent cred = new CreditContent();
 
-        public CreditsPanel(Panel _parent)
+        public CreditsPanel(Form _parent)
         {
             
             parent = _parent;

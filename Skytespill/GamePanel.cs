@@ -8,9 +8,9 @@ using System.Threading;
 
 namespace Skytespill
 {
-    class GamePanel : Panel
+    class GamePanel : Form
     {
-        private Panel parent;  //En referanse til foreldrevinduet.
+        private Form parent;  //En referanse til foreldrevinduet.
         private Player player;
         private island island;
         private int deskW;
@@ -20,9 +20,11 @@ namespace Skytespill
         private List<boat> boat_list = new List<boat>();
         private List<whale> whale_list = new List<whale>();
 
-        public GamePanel(Panel _parent)
+        
+
+        public GamePanel(Form _parent)
         {
-            
+            this.TopLevel = false;
             parent = _parent;
             deskW = parent.Width;
             deskH = parent.Height;
@@ -40,8 +42,7 @@ namespace Skytespill
                         true);
             this.UpdateStyles();
             this.SetStyle(ControlStyles.Selectable | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer, true);
-            this.Invalidate();
-
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.player = new Player(deskW, deskH);
             this.island = new island(deskW, deskH);
             Cursor.Hide();
@@ -157,7 +158,6 @@ namespace Skytespill
             // TODO whale respawn random
             // TODO faste objekter
             // TODO spawning av skip og level design
-
         }
 
         
@@ -178,7 +178,7 @@ namespace Skytespill
                 {
                     player.Rotation = 0;
                 }
-                this.Invalidate();
+                //this.Invalidate();
             }
             if (e.KeyCode == Keys.A)
             {
@@ -187,7 +187,7 @@ namespace Skytespill
                 {
                     player.Rotation = 360;
                 }
-                Invalidate();
+                //Invalidate();
             }
 
             if (e.KeyCode == Keys.B)
@@ -206,7 +206,7 @@ namespace Skytespill
                 ThreadStart ts = new ThreadStart(addwhale);
                 Thread whaleThread = new Thread(ts);
                     whaleThread.Start();
-                    this.Invalidate();
+                    //this.Invalidate();
             }
 
             if (e.KeyCode == Keys.Space)
@@ -215,7 +215,7 @@ namespace Skytespill
                     ThreadStart ts = new ThreadStart(addbullet);
                     Thread bulletThread = new Thread(ts);
                     bulletThread.Start();
-                    this.Invalidate();
+                    //this.Invalidate();
                 
                 for (int i = 0; i < bullet_list.Count; i++)
                 {
