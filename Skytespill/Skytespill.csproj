@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BigIsles.cs" />
     <Compile Include="boat.cs" />
     <Compile Include="ControlsPanel.cs">
       <SubType>Component</SubType>
@@ -74,7 +75,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Shot.cs" />
-    <Compile Include="SoundEngine.cs" />
     <Compile Include="whale.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
