@@ -15,12 +15,14 @@ namespace Skytespill
         private island island;
         private int deskW;
         private int deskH;
+        private int counter;
+        private int level;
         private Image capt = global::Skytespill.Properties.Resources.captain_10_v2;
         private List<Shot> bullet_list = new List<Shot>();
         private List<boat> boat_list = new List<boat>();
         private List<whale> whale_list = new List<whale>();
         private List<isles> isles_list = new List<isles>();
-
+        System.Windows.Forms.Timer levelTimer = new System.Windows.Forms.Timer();
         
 
         public GamePanel(Form _parent)
@@ -29,9 +31,9 @@ namespace Skytespill
             parent = _parent;
             deskW = parent.Width;
             deskH = parent.Height;
-            
+            this.counter = 1;
+            this.level = 10;
             BackgroundImage = global::Skytespill.Properties.Resources.ocean_tile2;
-
             this.Width = deskW;
             this.Height = deskH;
 
@@ -48,6 +50,10 @@ namespace Skytespill
             this.player = new Player(deskW, deskH);
             this.island = new island(deskW, deskH);
             Cursor.Hide();
+            levelTimer.Tick += new EventHandler(boatAddHandler);
+            addboat();
+            levelTimer.Interval = 5000;
+            levelTimer.Start();
             InitializeComponent();
             
         }
@@ -92,10 +98,53 @@ namespace Skytespill
                     b.Life--;
                     Explosiooon(bullet_list[i].X, bullet_list[i].Y, g);
                     bullet_list[i].Active = false;
+                   
                 }
                 if(b.Life <= 0) {
                     boat_list.Remove(b);
+                    this.counter++;
                     
+                    if(this.counter == 5){
+                        this.level = 9;
+                    }
+                    if (this.counter == 10)
+                    {
+                        this.level = 8;
+                    }
+                    if (this.counter == 20)
+                    {
+                        this.level = 7;
+                    }
+                    if (this.counter == 30)
+                    {
+                        this.level = 6;
+                    }
+                    if (this.counter == 40)
+                    {
+                        this.level = 5;
+                    }
+                    if (this.counter == 50)
+                    {
+                        this.level = 4;
+                    }
+                    if (this.counter == 60)
+                    {
+                        this.level = 3;
+                    }
+                    if (this.counter == 70)
+                    {
+                        this.level = 2;
+                    }
+                    if (this.counter == 80)
+                    {
+                        this.level = 1;
+                    }
+
+                    if (this.counter == 100)
+                    {
+                        this.level = 0;
+                    }
+
                 }
             }
         }
@@ -113,7 +162,10 @@ namespace Skytespill
             }
         }
 
-       
+        private void boatAddHandler(object sender, EventArgs e)
+        { 
+            addboat();
+        }
 
         private void DrawGame(PaintEventArgs e)
         {
@@ -129,6 +181,57 @@ namespace Skytespill
                 Item.moveWhale();
                 Item.draw(g);
             });
+
+            //BOATBOATBOAT
+
+
+
+
+            switch (this.level) 
+            { 
+                case 10:
+                    levelTimer.Interval = 5000;
+                break;
+                case 9:
+                levelTimer.Interval = 4000 ;
+                break;
+                case 8:
+                levelTimer.Interval = 3000 ;
+                break;
+                case 7:
+                levelTimer.Interval = 2000 ;
+                break;
+                case 6:
+                levelTimer.Interval = 1000;
+                break;
+                case 5:
+                levelTimer.Interval = 900 ;
+                break;
+                case 4:
+                levelTimer.Interval = 800;
+                break;
+                case 3:
+                levelTimer.Interval = 700;
+                break;
+                case 2:
+                levelTimer.Interval = 600;
+                break;
+                case 1:
+                levelTimer.Interval = 500;
+                break;
+                case 0:
+                levelTimer.Stop();
+                    //Release the hounds!
+                break;
+            }
+            
+
+       
+
+
+            
+
+
 
             // Boathandler
             boat_list.ForEach(Item =>
@@ -163,6 +266,7 @@ namespace Skytespill
 
             //Player Handler
             player.draw(g);
+
 
 
             // TODO fikse boss skipet
@@ -232,11 +336,12 @@ namespace Skytespill
             if (e.KeyCode == Keys.Space)
             {
                 
+                //if(bullet_list.Count < 5){
                     ThreadStart ts = new ThreadStart(addbullet);
                     Thread bulletThread = new Thread(ts);
                     bulletThread.Start();
                     //this.Invalidate();
-                
+               // }
                 for (int i = 0; i < bullet_list.Count; i++)
                 {
                     if(bullet_list[i].Active == false)

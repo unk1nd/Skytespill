@@ -270,6 +270,9 @@
   <ItemGroup>
     <None Include="Resources\Evan_LE_NY_-_Credits.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Bruno_Belotti_-_Benvenuta_Estate_Mazurka_Short_Loop.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

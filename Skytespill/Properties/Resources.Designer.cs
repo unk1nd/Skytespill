@@ -70,6 +70,15 @@ namespace Skytespill.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Bruno_Belotti___Benvenuta_Estate_Mazurka_Short_Loop {
+            get {
+                return ResourceManager.GetStream("Bruno_Belotti___Benvenuta_Estate_Mazurka_Short_Loop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap canon {

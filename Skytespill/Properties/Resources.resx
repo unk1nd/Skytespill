@@ -283,4 +283,7 @@
   <data name="Evan_LE_NY___Credits" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Evan_LE_NY_-_Credits.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Bruno_Belotti___Benvenuta_Estate_Mazurka_Short_Loop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bruno_Belotti_-_Benvenuta_Estate_Mazurka_Short_Loop.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

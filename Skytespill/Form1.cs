@@ -23,6 +23,7 @@ namespace Skytespill
 
         SoundPlayer menuTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Bolt___Vodka_Polka);
         SoundPlayer creditsTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Evan_LE_NY___Credits);
+        SoundPlayer mainGameTheme = new SoundPlayer(global::Skytespill.Properties.Resources.Bruno_Belotti___Benvenuta_Estate_Mazurka_Short_Loop);
 
         public Form1()
         {
@@ -47,6 +48,17 @@ namespace Skytespill
             else if (gamePanel != null)
             {
                 gamePanel.game_Panel_KeyDown(this, e);
+
+                if (e.KeyCode == Keys.Escape)
+                {
+                    menuPanel = new MenuPanel(this);
+                    t.Stop();                   
+                    gamePanel.Hide();
+                    gamePanel = null;
+                    Controls.Add(menuPanel);
+                    menuPanel.Show();
+                    menuTheme.PlayLooping();
+                }
             }
             else if (controlPanel != null) 
             {
@@ -114,7 +126,7 @@ namespace Skytespill
                     t.Tick += new EventHandler(gameTicker);
                     t.Interval = 10;
                     t.Start();
-                    menuTheme.Stop();
+                    mainGameTheme.PlayLooping();
 
                 }
 
